@@ -9,11 +9,11 @@ import { GiMoebiusTriangle } from "react-icons/gi";
 function Post({img, userAllName, tag, date, content}) {
     return (
          <div title='post' className=' flex text-lg flex-col w-full border-b-super-soft-black border-b-2'>
-            <div className='flex'>
-                <div className=' m-4 mb-1 w-16 h-16'>
-                    <img className=' rounded-full w-full h-full object-cover' src={img} alt="" />
+            <div className='flex '>
+                <div className=' m-4 mb-1 h-16 w-[10%]'>
+                    <img className='rounded-full object-cover ' src={img} alt="" />
                 </div>
-                <div className=' text-white py-3'>
+                <div className=' w-[90%] text-white py-3'>
                     <div><span className=' font-bold'>{userAllName}</span> <span className=' text-mega-soft-black'>{tag} · {date}</span></div>
                     <div>{content}</div>
                 </div>

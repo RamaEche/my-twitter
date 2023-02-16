@@ -1,0 +1,3 @@
+.hoverButton:focus > div > .hoverBorder{
+    background-color: #1D9BF0;
+}

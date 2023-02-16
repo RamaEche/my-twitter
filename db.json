@@ -1,105 +1,15 @@
 {
   "accounts": [
     {
-      "id": 3,
-      "userId": 3,
-      "sessionid": "e1p5p3e2p5p",
-      "email": "pepe2@pepeweb.ar",
-      "username": "pepe",
-      "password": "pepe123"
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "sessionid": "s3835l142",
-      "email": "luis@aaa.com",
-      "username": "luis",
+      "id": 1,
+      "userId": 1,
+      "sessionid": "r22r435m231",
+      "email": "ramiroecevarria@gmail.com",
+      "username": "ramiro",
       "password": "12345"
     }
   ],
   "users": [
-    {
-      "id": 3,
-      "username": "pepe",
-      "biography": "Hello, i am new on twitter",
-      "Joinded": "xxxx xx xx",
-      "Following": [],
-      "Followers": [],
-      "notifications": [],
-      "content": {
-        "posts": [],
-        "likes": [],
-        "lists": []
-      }
-    },
-    {
-      "id": 4,
-      "username": "luis",
-      "biography": "Hello, i am new on twitter",
-      "Joinded": "xxxx xx xx",
-      "Following": [],
-      "Followers": [],
-      "notifications": [],
-      "content": {
-        "posts": [],
-        "likes": [],
-        "lists": []
-      }
-    },
-    {
-      "id": 5,
-      "username": "aaa",
-      "biography": "Hello, i am new on twitter",
-      "Joinded": "xxxx xx xx",
-      "Following": [],
-      "Followers": [],
-      "notifications": [],
-      "content": {
-        "posts": [
-          {
-            "commentsId": [],
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [],
-            "content": "Hola mundo",
-            "date": "xxxx xx xx"
-          },
-          {
-            "commentsId": [],
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [],
-            "content": "Puto el que ve el json",
-            "date": "xxxx xx xx"
-          }
-        ],
-        "likes": [],
-        "lists": []
-      }
-    },
-    {
-      "id": 2,
-      "username": "ramiroecev",
-      "biography": "Hello, i am new on twitter",
-      "Joinded": "xxxx xx xx",
-      "Following": [],
-      "Followers": [],
-      "notifications": [],
-      "content": {
-        "posts": [
-          {
-            "commentsId": [],
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [],
-            "content": "Hola",
-            "date": "xxxx xx xx"
-          }
-        ],
-        "likes": [],
-        "lists": []
-      }
-    },
     {
       "id": 1,
       "username": "ramiro",
@@ -109,16 +19,7 @@
       "Followers": [],
       "notifications": [],
       "content": {
-        "posts": [
-          {
-            "commentsId": [],
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [],
-            "content": "Hola",
-            "date": "xxxx xx xx"
-          }
-        ],
+        "posts": [],
         "likes": [],
         "lists": []
       }

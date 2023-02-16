@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function Button({href, text, icon, bold}){
+function Button({href, text, icon, bold, onClick}){
 
     const [asignHref, setAsignHref] = useState();
     const [asignText, setAsignText] = useState();
@@ -8,6 +8,7 @@ function Button({href, text, icon, bold}){
     let [classNames, setClassNames] = useState();
     let Classes = ["h-12 flex m-2 px-2 py-7 items-center border-none rounded-full text-white g-black text-xl no-underline w-fit font-arial  hover:bg-soft-black"];
     useEffect(()=>{
+
         if(href !== undefined){
             setAsignHref(href);
         }
@@ -33,7 +34,7 @@ function Button({href, text, icon, bold}){
     }, []);
 
     return(
-        <a className={classNames} href={asignHref}><div className={icon !== undefined ? 'p-2.5 text-4xl' : undefined}>{asignIcon}</div><p className={text !== undefined ? 'pl-4 pr-4' : undefined}>{asignText}</p></a>
+        <a onClick={onClick} className={classNames} href={asignHref}><div className={icon !== undefined ? 'p-2.5 text-4xl' : undefined}>{asignIcon}</div><p className={text !== undefined ? 'pl-4 pr-4' : undefined}>{asignText}</p></a>
     )
 }
 

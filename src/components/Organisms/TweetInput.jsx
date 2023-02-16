@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+
 import UserContext from '../../contexts/UserContext'
+
+import { BiImageAlt } from "react-icons/bi";
+import { HiOutlineGif } from "react-icons/hi2";
 
 function TweetInput() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -54,7 +58,7 @@ function TweetInput() {
     }
 
     return (
-         <div className='flex w-full border-b-2 border-b-super-soft-black'>
+         <div className='flex w-full'>
             <div className='photo'>
                 <img src="https://xsgames.co/randomusers/assets/avatars/male/70.jpg" alt="" className=' h-16 w-16 rounded-full m-4'/>
             </div>
@@ -65,11 +69,8 @@ function TweetInput() {
                     </div>
                     <div className=' flex'>
                         <div className=' flex w-full items-center'>
-                            <div className=' bg-soft-white w-6 h-6 rounded-full mx-1'></div>
-                            <div className=' bg-soft-white w-6 h-6 rounded-full mx-1'></div>
-                            <div className=' bg-soft-white w-6 h-6 rounded-full mx-1'></div>
-                            <div className=' bg-soft-white w-6 h-6 rounded-full mx-1'></div>
-                            <div className=' bg-soft-white w-6 h-6 rounded-full mx-1'></div>
+                            <BiImageAlt className=' text-twitter w-6 h-6 rounded-full mx-1'/>
+                            <HiOutlineGif className=' text-twitter w-6 h-6 rounded-full mx-1'/>
                         </div>
                         <input value='Tweet' type="submit" className=' bg-twitter p-2 px-6 font-semibold text-white rounded-full'></input>
                     </div>

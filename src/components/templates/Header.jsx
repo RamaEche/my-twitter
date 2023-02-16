@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 
+import TweetAlertContext from '../../contexts/TweetAlertContext'
+
 import { GrTwitter } from "react-icons/gr";
 import { AiOutlineHome, AiFillHome, AiOutlineMessage, AiFillMessage } from "react-icons/ai";
 import { BiHash } from "react-icons/bi";
@@ -9,6 +11,8 @@ import { TbDatabase } from "react-icons/tb";
 import Button from '../atoms/Button'
 
 function Header() {
+    const {showTweetAlert, setShowTweetAlert, handleStateTweetAlert} = useContext(TweetAlertContext);
+
     return (
         <header className="h-full mr-12">
             <nav className=' flex h-full flex-col justify-between'>
@@ -19,7 +23,7 @@ function Header() {
                     <li><Button icon={<RiFileListLine/>} text="Listas" href="/:user/lists"/></li>
                     <li><Button icon={<BsPerson/>} text="Perfil" href="/:user"/></li>
                     <li><Button icon={<RiSettings3Line/>} text="Mas opciones"/></li>
-                    <li><Button text="Twittear" bold={true}/></li>
+                    <li><Button text="Twittear" bold={true} onClick={()=>handleStateTweetAlert(true)}/></li>
                 </ul>
                 <Button icon={<TbDatabase/>} text="Cuentas"/>
             </nav>

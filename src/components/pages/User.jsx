@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import Section from "../templates/Section";
 import Article from "../templates/Article";
+import UserProfile from "../templates/UserProfile";
+import SectionHeader from "../templates/SectionHeader";
 import SerchBar from "../Organisms/SerchBar";
+import UsersFeed from "../Organisms/UsersFeed";
 import Media from "../Organisms/Media";
 import Conditions from "../Organisms/Conditions";
 
@@ -14,7 +17,7 @@ function User({ setTitle }) {
     setTitle(`${userAllName} (@${userName}) / Twitter`);
     return (
         <>
-            <Section />
+            <Section elements={[<SectionHeader title='Fangames en español'/>, <UserProfile/>, <UsersFeed/>]}/>
             <Article elements={[<SerchBar />, <Media/>, <Conditions />]}/>
         </>
     )

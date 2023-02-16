@@ -15,6 +15,7 @@ module.exports = {
      'super-soft-black':'#333333',
      'mega-soft-black':'#777777',
      'mygray':"#16181C",
+     'mygray-soft':"#6e6e6e",
      'white' : '#ffffff',
      'soft-white' : '#eeeeee',
      'twitter' : "#1D9BF0",

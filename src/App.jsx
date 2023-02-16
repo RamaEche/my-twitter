@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 
 import LogedContext from './contexts/LogedContext'
 import UserContext from './contexts/UserContext'
+import TweetAlertContext from './contexts/TweetAlertContext'
 
 import Header from './components/templates/Header'
 import HeaderLogOut from './components/templates/HeaderLogOut'
@@ -19,6 +20,9 @@ function App() {
     const [user, setUser] = useState();
     const [shouldRedirect, setShouldRedirect] = useState(true);
     const location = useLocation();
+
+    const [showTweetAlert, setShowTweetAlert]  = useState(false);
+    const handleStateTweetAlert = state => setShowTweetAlert(state);
 
     useEffect(() => {
         fetch('http://localhost:3000/accounts')
@@ -65,45 +69,47 @@ function App() {
     }, [acountOpen])
 
     return (
-        <UserContext.Provider value={{user, setUser}}>
-            <LogedContext.Provider value={{acountOpen, setAcountOpen}}>
-                <div className=" bg-black flex justify-center h-full m-0 p-0 font-arial">
-                    {acountOpen ?(
-                        <>
-                            <Header/>
-                        </>
-                    )
-                    :
-                    (
-                        <>
-                            <HeaderLogOut/>
-                            <ManagerAcountAlert/>
-                        </>
-                    )}
+        <TweetAlertContext.Provider value={{showTweetAlert, setShowTweetAlert, handleStateTweetAlert}}>
+            <UserContext.Provider value={{user, setUser}}>
+                <LogedContext.Provider value={{acountOpen, setAcountOpen}}>
+                    <div className=" bg-black flex justify-center h-full m-0 p-0 font-arial">
+                        {acountOpen ?(
+                            <>
+                                <Header/>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                <HeaderLogOut/>
+                                <ManagerAcountAlert/>
+                            </>
+                        )}
 
-                    
-                    <div className="flex flex-row h-full">
-                        <Routes>
-                            {acountOpen ? (
-                                <>
-                                    <Route path='/home' element={<Home/>} />
-                                    <Route path='/notifications' element={<Notifications/>} />
-                                    <Route path='/:user/lists' element={<Lists/>} />
-                                    <Route path='/:user' element={<User/>} />
-                                </>
-                            )
-                            :
-                            (
-                                <>
-                                    <Route path='/explore' element={<ExploreLogOut/>}/>
-                                </>
-                            )}
-                            //crear 404
-                        </Routes>
+                        
+                        <div className="flex flex-row h-full">
+                            <Routes>
+                                {acountOpen ? (
+                                    <>
+                                        <Route path='/home' element={<Home/>} />
+                                        <Route path='/notifications' element={<Notifications/>} />
+                                        <Route path='/:user/lists' element={<Lists/>} />
+                                        <Route path='/:user' element={<User/>} />
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+                                        <Route path='/explore' element={<ExploreLogOut/>}/>
+                                    </>
+                                )}
+                                //crear 404
+                            </Routes>
+                        </div>
                     </div>
-                </div>
-            </LogedContext.Provider>
-        </UserContext.Provider>
+                </LogedContext.Provider>
+            </UserContext.Provider>
+        </TweetAlertContext.Provider>
     )
 }
 
