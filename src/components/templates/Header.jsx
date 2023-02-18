@@ -3,18 +3,21 @@ import React, { useState, useContext, useEffect } from 'react'
 import TweetAlertContext from '../../contexts/TweetAlertContext'
 
 import { GrTwitter } from "react-icons/gr";
-import { AiOutlineHome, AiFillHome, AiOutlineMessage, AiFillMessage } from "react-icons/ai";
-import { BiHash } from "react-icons/bi";
-import { RiNotification2Line, RiNotification2Fill, RiFileListLine, RiFileListFill, RiSettings3Line } from "react-icons/ri";
-import { BsBookmarks, BsBookmarksFill, BsPerson } from "react-icons/bs";
-import { TbDatabase } from "react-icons/tb";
+import { RiMoreFill } from "react-icons/ri";
+import { AiOutlineHome } from "react-icons/ai";
+import { RiNotification2Line, RiFileListLine, RiSettings3Line } from "react-icons/ri";
+import { BsPerson } from "react-icons/bs";
 import Button from '../atoms/Button'
+import AccountsButton from '../atoms/AccountsButton'
 
 function Header() {
     const {showTweetAlert, setShowTweetAlert, handleStateTweetAlert} = useContext(TweetAlertContext);
 
+    const [panelState, setPanelState] = useState(false);
+    const changePanel = state=> setPanelState(state);
+
     return (
-        <header className="h-full mr-12">
+        <header className="h-full mr-3">
             <nav className=' flex h-full flex-col justify-between'>
                 <ul className=' list-none'>
                     <li><Button icon={<GrTwitter/>} href="/home"/></li>
@@ -22,10 +25,25 @@ function Header() {
                     <li><Button icon={<RiNotification2Line/>} text="Notificaciones" href="/notifications"/></li>
                     <li><Button icon={<RiFileListLine/>} text="Listas" href="/:user/lists"/></li>
                     <li><Button icon={<BsPerson/>} text="Perfil" href="/:user"/></li>
-                    <li><Button icon={<RiSettings3Line/>} text="Mas opciones"/></li>
+                    <li><Button icon={<RiSettings3Line/>} text="Mas opciones" href="/settings"/></li>
                     <li><Button text="Twittear" bold={true} onClick={()=>handleStateTweetAlert(true)}/></li>
                 </ul>
-                <Button icon={<TbDatabase/>} text="Cuentas"/>
+                <div className={panelState ? 'visible' : 'invisible'}>
+                    <div onClick={()=>changePanel(false)} className='w-full h-full absolute top-0 left-0'></div>
+                    <div className=' bg-black flex py-3 flex-col items-center justify-center rounded-2xl absolute w-[280px] bottom-[90px] shadow-white shadow-[0_0px_25px_-15px_rgba(0,0,0,0.3)]'>
+                        <div className=' border-2 border-b-super-soft-black h-[1px] w-full'></div>
+                        <AccountsButton title='Log out'/>
+                        <AccountsButton title='Account settings'/>
+                    </div>
+                </div>
+                <button onClick={()=>changePanel(true)} className=' hover:bg-mygray rounded-full flex items-center py-3 min-w-[270px] justify-center mb-3'>
+                    <img src="https://xsgames.co/randomusers/assets/avatars/male/70.jpg" className=' ml-4 rounded-full h-[50px]'/>
+                    <div className='flex flex-col ml-4 items-start text-base leading-[22px]'>
+                        <p className=' text-white font-semibold'>Fangames en esp..</p>
+                        <p className=' text-mega-soft-black'>@FangamesE</p>
+                    </div>
+                    <RiMoreFill className=' text-white mx-4 text-[23px]'/>
+                </button>
             </nav>
         </header>
     );

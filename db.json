@@ -3,13 +3,45 @@
     {
       "id": 1,
       "userId": 1,
-      "sessionid": "r22r435m231",
+      "sessionid": "v6b7riy780",
       "email": "ramiroecevarria@gmail.com",
       "username": "ramiro",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "sessionid": "2j382451n",
+      "email": "juan@gmail.com",
+      "username": "juan",
+      "password": "12345"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "sessionid": "54p3515p2",
+      "email": "fangamesarg@gmail.com",
+      "username": "pepe",
       "password": "12345"
     }
   ],
   "users": [
+    {
+      "id": 2,
+      "username": "juan",
+      "biography": "Hello, i am new on twitter",
+      "Joinded": "xxxx xx xx",
+      "Following": [
+        1
+      ],
+      "Followers": [],
+      "notifications": [],
+      "content": {
+        "posts": [],
+        "likes": [],
+        "lists": []
+      }
+    },
     {
       "id": 1,
       "username": "ramiro",
@@ -19,7 +51,43 @@
       "Followers": [],
       "notifications": [],
       "content": {
-        "posts": [],
+        "posts": [
+          {
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "Holaaa",
+            "date": "xxxx xx xx"
+          }
+        ],
+        "likes": [],
+        "lists": []
+      }
+    },
+    {
+      "id": 3,
+      "username": "pepe",
+      "biography": "Hello, i am new on twitter",
+      "Joinded": "xxxx xx xx",
+      "Following": [],
+      "Followers": [],
+      "notifications": [],
+      "content": {
+        "posts": [
+          {
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "Hola soy pepe",
+            "date": "xxxx xx xx"
+          }
+        ],
         "likes": [],
         "lists": []
       }

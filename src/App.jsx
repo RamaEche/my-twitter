@@ -13,6 +13,7 @@ import ExploreLogOut from './components/templates/ExploreLogOut'
 import Notifications from './components/pages/Notifications'
 import Lists from './components/pages/Lists'
 import User from './components/pages/User'
+import Settings from './components/pages/Settings'
 import ManagerAcountAlert from './components/templates/ManagerAcountAlert'
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
                                         <Route path='/notifications' element={<Notifications/>} />
                                         <Route path='/:user/lists' element={<Lists/>} />
                                         <Route path='/:user' element={<User/>} />
+                                        <Route path='/settings' element={<Settings/>} />
                                     </>
                                 )
                                 :

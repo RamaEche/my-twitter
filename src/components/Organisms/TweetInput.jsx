@@ -21,6 +21,8 @@ function TweetInput() {
 
         newUser.content.posts.push({
             commentsId:[],
+            username:"ramiro",
+            allUserName: "Ramiro Echevarria",
             retweetsUsersId:[],
             likesUserId:[],
             viewsUserId:[],
