@@ -4,10 +4,6 @@ import TweetInput from "../Organisms/TweetInput";
 import { RiCloseLine } from "react-icons/ri";
 
 function TweetAlert({ className, close }) {
-    useEffect(()=>{
-        console.log(className)
-    }, [className])
-
     return (
         <div className={'flex items-center justify-center absolute top-0 left-0 w-full h-full' + className}>
             <div className=' bg-twitter-gray text-white w-full h-full opacity-20 absolute top-0 left-0'>

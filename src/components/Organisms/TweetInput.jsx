@@ -23,11 +23,13 @@ function TweetInput() {
             commentsId:[],
             username:"ramiro",
             allUserName: "Ramiro Echevarria",
+            img: 'https://xsgames.co/randomusers/assets/avatars/male/70.jpg',
             retweetsUsersId:[],
             likesUserId:[],
             viewsUserId:[],
             content: data.text,
-            date:"xxxx xx xx"
+            date:"xxxx xx xx",
+            dateInMilliseconds: 100000
         })
         
         await fetch(`http://localhost:3000/users/${user.id}`,{

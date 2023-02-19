@@ -30,6 +30,7 @@
       "id": 2,
       "username": "juan",
       "biography": "Hello, i am new on twitter",
+      "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "Joinded": "xxxx xx xx",
       "Following": [
         1
@@ -46,6 +47,7 @@
       "id": 1,
       "username": "ramiro",
       "biography": "Hello, i am new on twitter",
+      "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "Joinded": "xxxx xx xx",
       "Following": [],
       "Followers": [],
@@ -56,11 +58,25 @@
             "commentsId": [],
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
             "retweetsUsersId": [],
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Holaaa",
-            "date": "xxxx xx xx"
+            "date": "viejo",
+            "dateInMilliseconds": 20000
+          },
+          {
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "Cambiando el feed. Soy nuevo",
+            "date": "nuevo",
+            "dateInMilliseconds": 100000
           }
         ],
         "likes": [],
@@ -71,6 +87,7 @@
       "id": 3,
       "username": "pepe",
       "biography": "Hello, i am new on twitter",
+      "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "Joinded": "xxxx xx xx",
       "Following": [],
       "Followers": [],
@@ -81,11 +98,13 @@
             "commentsId": [],
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
             "retweetsUsersId": [],
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Hola soy pepe",
-            "date": "xxxx xx xx"
+            "date": "mas viejo",
+            "dateInMilliseconds": 1000
           }
         ],
         "likes": [],

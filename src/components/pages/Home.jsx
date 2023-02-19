@@ -19,11 +19,15 @@ import Title from "../../hocs/Title";
 function Home({ setTitle }) {
     setTitle("Home / Twitter");
     const {showTweetAlert, setShowTweetAlert, handleStateTweetAlert} = useContext(TweetAlertContext);
-    const [newNosts, setNewNosts] = useState();
+    const [newPosts, setNewPosts] = useState();
     const {user, setUser} = useContext(UserContext)
     const [feedState, setFeedState] = useState('forYou');
 
     useEffect(()=>{
+        ShowNewPosts();
+    }, [feedState]);
+
+    const ShowNewPosts = ()=>{
         if(feedState == 'forYou'){
             GetNewForYouPosts();
         }else if(feedState == 'following'){
@@ -31,7 +35,7 @@ function Home({ setTitle }) {
         }else{
             console.log('error, this feed doesnt exist');
         }
-    }, [feedState]);
+    }
 
     const GetNewForYouPosts= ()=>{  //all posts in twitter
         fetch(`http://localhost:3000/users`)
@@ -43,37 +47,45 @@ function Home({ setTitle }) {
                     currentPosts.push(info[i].content.posts[j]);
                 }
             }
-            if (newNosts !== currentPosts) {
-                setNewNosts(currentPosts);
+            if (newPosts !== currentPosts) {
+                setNewPosts(currentPosts);
             }
         })
     }
 
-    const GetNewFollowingPosts= ()=>{ //posts from users that the user follow
-        fetch(`http://localhost:3000/users/${user.id}`)
+    const GetNewFollowingPosts= async()=>{ //posts from users that the user follow
+        let followingIds = []
+        await fetch(`http://localhost:3000/users/${user.id}`)
         .then(response => response.json())
         .then(info=>{
-            let currentPosts = []
-            for (let i = 0; i < info.Following.length; i++) {
-                fetch(`http://localhost:3000/users/${info.Following[i]}`)
-                .then(response => response.json())
-                .then(infoFromCurentUser=>{
-                    for (let i = 0; i < infoFromCurentUser.content.posts.length; i++) {
-                        currentPosts.push(infoFromCurentUser.content.posts[i]);
-                    }
-                })
-            }
-            if (newNosts !== currentPosts) {
-                setNewNosts(currentPosts);
-            }
+            followingIds = info.Following;
         })
+        
+        let currentPosts = []
+        for (let i = 0; i < followingIds.length; i++) {
+            await fetch(`http://localhost:3000/users/${followingIds[i]}`)
+            .then(response => response.json())
+            .then(infoFromCurentUser=>{
+                for (let i = 0; i < infoFromCurentUser.content.posts.length; i++) {
+                    currentPosts.push(infoFromCurentUser.content.posts[i]);
+                }
+            })
+        }
+        if (newPosts !== currentPosts) {
+            setNewPosts(currentPosts);
+        }
     }
 
     return (
         <>
             <TweetAlert className={showTweetAlert ? " visible" : " invisible"} close={()=>handleStateTweetAlert(false)}/>
 
-            <Section elements={[<FeedSelector feedState={feedState} setFeedState={state=>setFeedState(state)} newNosts={newNosts}/>, <><TweetInput/><div className='w-full border-b-2 border-b-super-soft-black'></div></>, <ShowMoreTweets/>, <Feed feedState={feedState} newNosts={newNosts}/>]}/>
+            <Section elements={[
+                <FeedSelector feedState={feedState} setFeedState={state=>setFeedState(state)} newPosts={newPosts}/>,
+                <TweetInput/>,
+                <div className='w-full border-b-2 border-b-super-soft-black'></div>,
+                <ShowMoreTweets ShowNewPosts={ShowNewPosts}/>,
+                <Feed feedState={feedState} newPosts={newPosts}/>]}/>
             <Article elements={[<SerchBar/>, <Conditions />]}/>
         </>
     )
