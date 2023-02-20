@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import Cookies from 'js-cookie';
 
 import TweetAlertContext from '../../contexts/TweetAlertContext'
 
@@ -15,6 +16,10 @@ function Header() {
 
     const [panelState, setPanelState] = useState(false);
     const changePanel = state=> setPanelState(state);
+    const LogOut = ()=>{
+        Cookies.remove('sessionId')
+        window.location.replace('/home')
+    }
 
     return (
         <header className="h-full mr-3">
@@ -32,8 +37,8 @@ function Header() {
                     <div onClick={()=>changePanel(false)} className='w-full h-full absolute top-0 left-0'></div>
                     <div className=' bg-black flex py-3 flex-col items-center justify-center rounded-2xl absolute w-[280px] bottom-[90px] shadow-white shadow-[0_0px_25px_-15px_rgba(0,0,0,0.3)]'>
                         <div className=' border-2 border-b-super-soft-black h-[1px] w-full'></div>
-                        <AccountsButton title='Log out'/>
-                        <AccountsButton title='Account settings'/>
+                        <AccountsButton title='Log out' onClick={()=>LogOut()}/>
+                        <AccountsButton title='Account settings' href="/settings"/>
                     </div>
                 </div>
                 <button onClick={()=>changePanel(true)} className=' hover:bg-mygray rounded-full flex items-center py-3 min-w-[270px] justify-center mb-3'>

@@ -15,6 +15,7 @@ import Lists from './components/pages/Lists'
 import User from './components/pages/User'
 import Settings from './components/pages/Settings'
 import ManagerAcountAlert from './components/templates/ManagerAcountAlert'
+import TweetAlert from "./components/templates/TweetAlert";
 
 function App() {
     const [acountOpen, setAcountOpen] = useState();
@@ -77,6 +78,7 @@ function App() {
                         {acountOpen ?(
                             <>
                                 <Header/>
+                                <TweetAlert className={showTweetAlert ? " visible" : " invisible"} close={()=>handleStateTweetAlert(false)}/>
                             </>
                         )
                         :

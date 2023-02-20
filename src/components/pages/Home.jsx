@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 
-import TweetAlertContext from '../../contexts/TweetAlertContext'
 import UserContext from '../../contexts/UserContext'
 
 import Post from '../molecules/Post'
@@ -12,13 +11,12 @@ import FeedSelector from "../Organisms/FeedSelector";
 import TweetInput from "../Organisms/TweetInput";
 import ShowMoreTweets from "../Organisms/ShowMoreTweets";
 import Feed from "../Organisms/Feed";
-import TweetAlert from "../templates/TweetAlert";
 
 import Title from "../../hocs/Title";
     
 function Home({ setTitle }) {
     setTitle("Home / Twitter");
-    const {showTweetAlert, setShowTweetAlert, handleStateTweetAlert} = useContext(TweetAlertContext);
+
     const [newPosts, setNewPosts] = useState();
     const {user, setUser} = useContext(UserContext)
     const [feedState, setFeedState] = useState('forYou');
@@ -78,8 +76,6 @@ function Home({ setTitle }) {
 
     return (
         <>
-            <TweetAlert className={showTweetAlert ? " visible" : " invisible"} close={()=>handleStateTweetAlert(false)}/>
-
             <Section elements={[
                 <FeedSelector feedState={feedState} setFeedState={state=>setFeedState(state)} newPosts={newPosts}/>,
                 <TweetInput/>,
