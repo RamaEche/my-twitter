@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Notification from "../molecules/Notification";
+import UserContext from '../../contexts/UserContext'
 
 function NotificationsFeed() {
+    const {user, setUser} = useContext(UserContext);
+    const [notification, setNotification] = useState([]);
+
+    useEffect(()=>{
+        if (user != undefined) {
+            fetch(`http://localhost:3000/users/${user.id}`)
+            .then(response => response.json())
+            .then(info =>{
+                setNotification(info.notifications)
+            })   
+        }
+    }, [user])
+
+    useEffect(()=>{
+        console.log(notification)
+    }, [notification])
+
     return (
         <div>
-            <Notification content='La cuenta se creo exitosamente La cuenta se creo exitosamente se creo exitosamente.' img='twitter'/>
-            <Notification content='El tweet se envio exitosamente.' img='post'/>
-            <Notification content='A @pepe le gusto tu tweet:"Hola mundo".' img='like'/>
-            <Notification content='@pepe ahora te sigue.' img='twitter'/>
+            {notification && notification.map((item, index) => (
+                <div key={index}>
+                    <Notification content={item.content} img={item.img} fullDate={item.fullDate}/>
+                </div>
+            ))}
         </div>
     );
 }

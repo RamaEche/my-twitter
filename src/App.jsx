@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import LogedContext from './contexts/LogedContext'
 import UserContext from './contexts/UserContext'
 import TweetAlertContext from './contexts/TweetAlertContext'
+import createNotificationContext from "./contexts/NotificationsContext";
 
 import Header from './components/templates/Header'
 import HeaderLogOut from './components/templates/HeaderLogOut'
@@ -25,7 +26,7 @@ function App() {
 
     const [showTweetAlert, setShowTweetAlert]  = useState(false);
     const handleStateTweetAlert = state => setShowTweetAlert(state);
-
+    
     useEffect(() => {
         fetch('http://localhost:3000/accounts')
         .then(response => response.json())

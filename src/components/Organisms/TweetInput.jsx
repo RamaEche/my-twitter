@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 
+import createNotificationContext from '../../contexts/NotificationsContext'
 import UserContext from '../../contexts/UserContext'
 
 import { BiImageAlt } from "react-icons/bi";
@@ -8,6 +9,7 @@ import { HiOutlineGif } from "react-icons/hi2";
 
 function TweetInput() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const createNotification = useContext(createNotificationContext)
     const {user, setUser} = useContext(UserContext);
 
     const onSubmit = async (data) =>{
@@ -20,6 +22,7 @@ function TweetInput() {
         })
 
         newUser.content.posts.push({
+            PostId: 0,
             commentsId:[],
             username:"ramiro",
             allUserName: "Ramiro Echevarria",
@@ -31,16 +34,9 @@ function TweetInput() {
             date:"xxxx xx xx",
             dateInMilliseconds: 100000
         })
-        
-        await fetch(`http://localhost:3000/users/${user.id}`,{
-            method:'DELETE'
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
 
-        await fetch(`http://localhost:3000/users/`,{
-            method:'POST',
+        await fetch(`http://localhost:3000/users/${user.id}`,{
+            method:'PUT',
             body: JSON.stringify(newUser),
             headers: {
                 'Content-Type': 'application/json'
@@ -48,7 +44,8 @@ function TweetInput() {
         })
         .then(response => {
             if (response.ok) {
-              console.log('Post created'); 
+              console.log('Post created');
+              createNotification(`Tweet created: "${data.text}"`, "Twitter");
             } else {
               console.error('Failed to create post');
             }

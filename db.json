@@ -29,6 +29,7 @@
     {
       "id": 2,
       "username": "juan",
+      "userAllName": "User_juan",
       "biography": "Hello, i am new on twitter",
       "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "Joinded": "xxxx xx xx",
@@ -36,16 +37,92 @@
         1
       ],
       "Followers": [],
-      "notifications": [],
+      "notifications": [
+        {
+          "content": "Tweet created: \"aaa\"",
+          "img": "Twitter",
+          "fullDate": "21 February 2023"
+        }
+      ],
       "content": {
-        "posts": [],
+        "posts": [
+          {
+            "PostId": 0,
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "Holaaaaa putos",
+            "date": "xxxx xx xx",
+            "dateInMilliseconds": 100000
+          },
+          {
+            "PostId": 0,
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "Holaaaa",
+            "date": "xxxx xx xx",
+            "dateInMilliseconds": 100000
+          },
+          {
+            "PostId": 0,
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "Holaaaa",
+            "date": "xxxx xx xx",
+            "dateInMilliseconds": 100000
+          },
+          {
+            "PostId": 0,
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "a",
+            "date": "xxxx xx xx",
+            "dateInMilliseconds": 100000
+          },
+          {
+            "PostId": 0,
+            "commentsId": [],
+            "username": "ramiro",
+            "allUserName": "Ramiro Echevarria",
+            "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+            "retweetsUsersId": [],
+            "likesUserId": [],
+            "viewsUserId": [],
+            "content": "aaa",
+            "date": "xxxx xx xx",
+            "dateInMilliseconds": 100000
+          }
+        ],
         "likes": [],
-        "lists": []
+        "lists": [
+          1,
+          2
+        ]
       }
     },
     {
       "id": 1,
       "username": "ramiro",
+      "userAllName": "User_ramiro",
       "biography": "Hello, i am new on twitter",
       "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "Joinded": "xxxx xx xx",
@@ -55,6 +132,7 @@
       "content": {
         "posts": [
           {
+            "PostId": 0,
             "commentsId": [],
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
@@ -67,6 +145,7 @@
             "dateInMilliseconds": 20000
           },
           {
+            "PostId": 1,
             "commentsId": [],
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
@@ -86,6 +165,7 @@
     {
       "id": 3,
       "username": "pepe",
+      "userAllName": "User_pepe",
       "biography": "Hello, i am new on twitter",
       "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "Joinded": "xxxx xx xx",
@@ -95,6 +175,7 @@
       "content": {
         "posts": [
           {
+            "PostId": 2,
             "commentsId": [],
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",

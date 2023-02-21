@@ -64,6 +64,7 @@ function SingIn({ className, close }) {
             sessionid: newSessionId,
             email: data.email, 
             username: data.username, 
+            userAllName: "User_" + data.username, 
             password: data.password
           }),
           headers: {

@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 
 import UserContext from '../../contexts/UserContext'
 
-import Post from '../molecules/Post'
 import Section from "../templates/Section";
 import Article from "../templates/Article";
 import SerchBar from "../Organisms/SerchBar";
