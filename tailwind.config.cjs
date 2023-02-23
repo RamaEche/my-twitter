@@ -20,7 +20,8 @@ module.exports = {
      'soft-white' : '#eeeeee',
      'twitter' : "#1D9BF0",
      'twitter-gray' : "#A0C5DF",
-     'min-soft-black' : '#080808'
+     'min-soft-black' : '#080808',
+     'red' : "#F4212E"
    }
  },
  plugins: [],

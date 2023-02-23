@@ -5,9 +5,9 @@ import Cookies from 'js-cookie';
 import LogedContext from './contexts/LogedContext'
 import UserContext from './contexts/UserContext'
 import TweetAlertContext from './contexts/TweetAlertContext'
-import createNotificationContext from "./contexts/NotificationsContext";
 
 import Header from './components/templates/Header'
+import UserProfile from './components/templates/UserProfile'
 import HeaderLogOut from './components/templates/HeaderLogOut'
 import Home from './components/pages/Home'
 import ExploreLogOut from './components/templates/ExploreLogOut'
@@ -21,7 +21,6 @@ import TweetAlert from "./components/templates/TweetAlert";
 function App() {
     const [acountOpen, setAcountOpen] = useState();
     const [user, setUser] = useState();
-    const [shouldRedirect, setShouldRedirect] = useState(true);
     const location = useLocation();
 
     const [showTweetAlert, setShowTweetAlert]  = useState(false);
@@ -65,7 +64,6 @@ function App() {
             }  
         }else if(acountOpen == true){
             if (location.pathname === "/") {
-                setShouldRedirect(true);
                 window.location.replace('/home');
             } 
         }
@@ -97,8 +95,8 @@ function App() {
                                     <>
                                         <Route path='/home' element={<Home/>} />
                                         <Route path='/notifications' element={<Notifications/>} />
-                                        <Route path='/:user/lists' element={<Lists/>} />
-                                        <Route path='/:user' element={<User/>} />
+                                        <Route path='/lists' element={<Lists/>} />
+                                        <Route path='/:user' element={<User/>}/>
                                         <Route path='/settings' element={<Settings/>} />
                                     </>
                                 )

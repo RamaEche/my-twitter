@@ -87,6 +87,7 @@ function SingIn({ className, close }) {
             notifications:[],
             content:{
                 posts:[],
+                reTweetedPosts:[],
                 likes:[],
                 lists:[]
             }

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import Cookies from 'js-cookie';
 
 import TweetAlertContext from '../../contexts/TweetAlertContext'
+import UserContext from '../../contexts/UserContext'
 
 import { GrTwitter } from "react-icons/gr";
 import { RiMoreFill } from "react-icons/ri";
@@ -13,13 +14,18 @@ import AccountsButton from '../atoms/AccountsButton'
 
 function Header() {
     const {showTweetAlert, setShowTweetAlert, handleStateTweetAlert} = useContext(TweetAlertContext);
-
+    const {user, setUser} = useContext(UserContext)
+    const [userName, setUserName] = useState("http://localhost:5173/a");
     const [panelState, setPanelState] = useState(false);
     const changePanel = state=> setPanelState(state);
     const LogOut = ()=>{
         Cookies.remove('sessionId')
         window.location.replace('/home')
     }
+
+    useEffect(()=>{
+        user != undefined && setUserName(user.username);
+    },[user])
 
     return (
         <header className="h-full mr-3">
@@ -28,8 +34,8 @@ function Header() {
                     <li><Button icon={<GrTwitter/>} href="/home"/></li>
                     <li><Button icon={<AiOutlineHome/>} text="Inicio" href="/home"/></li>
                     <li><Button icon={<RiNotification2Line/>} text="Notificaciones" href="/notifications"/></li>
-                    <li><Button icon={<RiFileListLine/>} text="Listas" href="/:user/lists"/></li>
-                    <li><Button icon={<BsPerson/>} text="Perfil" href="/:user"/></li>
+                    <li><Button icon={<RiFileListLine/>} text="Listas" href="/lists"/></li>
+                    <li><Button icon={<BsPerson/>} text="Perfil" href={userName}/></li>
                     <li><Button icon={<RiSettings3Line/>} text="Mas opciones" href="/settings"/></li>
                     <li><Button text="Twittear" bold={true} onClick={()=>handleStateTweetAlert(true)}/></li>
                 </ul>

@@ -31,7 +31,7 @@ function Button({href, text, icon, bold, onClick}){
         }
         
         setClassNames(Classes.join(" "));
-    }, []);
+    }, [href, text, icon, bold, onClick]);
 
     return(
         <a onClick={onClick} className={classNames} href={asignHref}><div className={icon !== undefined ? 'p-2.5 text-4xl' : undefined}>{asignIcon}</div><p className={text !== undefined ? 'pl-4 pr-4' : undefined}>{asignText}</p></a>

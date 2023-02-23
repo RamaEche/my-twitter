@@ -80,7 +80,7 @@ function Home({ setTitle }) {
                 <TweetInput/>,
                 <div className='w-full border-b-2 border-b-super-soft-black'></div>,
                 <ShowMoreTweets ShowNewPosts={ShowNewPosts}/>,
-                <Feed feedState={feedState} newPosts={newPosts}/>]}/>
+                <Feed newPosts={newPosts}/>]}/>
             <Article elements={[<SerchBar/>, <Conditions />]}/>
         </>
     )

@@ -32,6 +32,7 @@
       "userAllName": "User_juan",
       "biography": "Hello, i am new on twitter",
       "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+      "banerImg": "https://pbs.twimg.com/profile_banners/1407378109259780099/1650130239/1500x500",
       "Joinded": "xxxx xx xx",
       "Following": [
         1
@@ -47,8 +48,9 @@
       "content": {
         "posts": [
           {
-            "PostId": 0,
-            "commentsId": [],
+            "PostId": 7,
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -56,12 +58,14 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Holaaaaa putos",
+            "contentImage": null,
             "date": "xxxx xx xx",
             "dateInMilliseconds": 100000
           },
           {
-            "PostId": 0,
-            "commentsId": [],
+            "PostId": 4,
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -69,12 +73,14 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Holaaaa",
+            "contentImage": null,
             "date": "xxxx xx xx",
             "dateInMilliseconds": 100000
           },
           {
-            "PostId": 0,
-            "commentsId": [],
+            "PostId": 5,
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -82,12 +88,14 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Holaaaa",
+            "contentImage": null,
             "date": "xxxx xx xx",
             "dateInMilliseconds": 100000
           },
           {
-            "PostId": 0,
-            "commentsId": [],
+            "PostId": 6,
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -95,12 +103,14 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "a",
+            "contentImage": null,
             "date": "xxxx xx xx",
             "dateInMilliseconds": 100000
           },
           {
-            "PostId": 0,
-            "commentsId": [],
+            "PostId": 3,
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -108,11 +118,30 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "aaa",
+            "contentImage": "Este post SI tiene media",
             "date": "xxxx xx xx",
             "dateInMilliseconds": 100000
           }
         ],
-        "likes": [],
+        "reTweetedPosts":[
+          {
+            "userId":1,
+            "PostId":1
+          }
+      ],
+        "likes": [
+          {
+            "userId":1,
+            "PostId":1
+          },
+          {
+            "userId":2,
+            "PostId":3
+          },
+          {
+            "userId":3,
+            "PostId":2
+          }],
         "lists": [
           1,
           2
@@ -125,6 +154,7 @@
       "userAllName": "User_ramiro",
       "biography": "Hello, i am new on twitter",
       "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+      "banerImg": "https://pbs.twimg.com/profile_banners/1407378109259780099/1650130239/1500x500",
       "Joinded": "xxxx xx xx",
       "Following": [],
       "Followers": [],
@@ -133,7 +163,8 @@
         "posts": [
           {
             "PostId": 0,
-            "commentsId": [],
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -141,12 +172,14 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Holaaa",
+            "contentImage": null,
             "date": "viejo",
             "dateInMilliseconds": 20000
           },
           {
             "PostId": 1,
-            "commentsId": [],
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -154,10 +187,12 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Cambiando el feed. Soy nuevo",
+            "contentImage": null,
             "date": "nuevo",
             "dateInMilliseconds": 100000
           }
         ],
+        "reTweetedPosts":[],
         "likes": [],
         "lists": []
       }
@@ -168,6 +203,7 @@
       "userAllName": "User_pepe",
       "biography": "Hello, i am new on twitter",
       "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+      "banerImg": "https://pbs.twimg.com/profile_banners/1407378109259780099/1650130239/1500x500",
       "Joinded": "xxxx xx xx",
       "Following": [],
       "Followers": [],
@@ -176,7 +212,8 @@
         "posts": [
           {
             "PostId": 2,
-            "commentsId": [],
+            "comments": [],
+            "commentFrom": null,
             "username": "ramiro",
             "allUserName": "Ramiro Echevarria",
             "img": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
@@ -184,10 +221,12 @@
             "likesUserId": [],
             "viewsUserId": [],
             "content": "Hola soy pepe",
+            "contentImage": null,
             "date": "mas viejo",
             "dateInMilliseconds": 1000
           }
         ],
+        "reTweetedPosts":[],
         "likes": [],
         "lists": []
       }

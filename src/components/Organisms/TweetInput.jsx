@@ -23,7 +23,8 @@ function TweetInput() {
 
         newUser.content.posts.push({
             PostId: 0,
-            commentsId:[],
+            comments:[],
+            commentFrom: null,
             username:"ramiro",
             allUserName: "Ramiro Echevarria",
             img: 'https://xsgames.co/randomusers/assets/avatars/male/70.jpg',
@@ -31,6 +32,7 @@ function TweetInput() {
             likesUserId:[],
             viewsUserId:[],
             content: data.text,
+            contentImage: null,
             date:"xxxx xx xx",
             dateInMilliseconds: 100000
         })

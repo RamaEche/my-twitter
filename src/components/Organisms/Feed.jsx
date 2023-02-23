@@ -2,8 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 
 import Post from '../molecules/Post';
 
-function Feed({ feedState, newPosts }) {
-    const [lastFeedState, setLastFeedState] = useState(feedState);
+function Feed({ newPosts }) {
     const [posts, setPosts] = useState([]);
     const [messyPosts, setMessyPosts] = useState([]);
 
