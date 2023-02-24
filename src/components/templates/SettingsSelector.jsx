@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import SettingButton from '../atoms/SettingButton'
 
-function SettingsSelector() {
+function SettingsSelector({ setSettingSelection, settingSelection }) {
     return (
         <>
-            <SettingButton title="Your account" selected={true}/>
-            <SettingButton title="User options" selected={false}/>
-            <SettingButton title="lists options" selected={false}/>
-            <SettingButton title="Display" selected={false}/>
-            <SettingButton title="Language" selected={false}/>
+            <SettingButton onClick={()=>setSettingSelection("Your account")} settingSelection={settingSelection} title="Your account" selected={ settingSelection == "Your account" }/>
+            <SettingButton onClick={()=>setSettingSelection("User options")} settingSelection={settingSelection} title="User options" selected={ settingSelection == "User options" }/>
+            <SettingButton onClick={()=>setSettingSelection("Lists options")} settingSelection={settingSelection} title="Lists options" selected={ settingSelection == "Lists options" }/>
+            <SettingButton onClick={()=>setSettingSelection("Display")} settingSelection={settingSelection} title="Display" selected={ settingSelection == "Display" }/>
         </>
     )
 }

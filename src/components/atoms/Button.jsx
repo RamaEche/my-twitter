@@ -20,7 +20,7 @@ function Button({href, text, icon, bold, onClick}){
         }
 
         if(bold){
-            Classes.push("bg-twitter font-semibold hover:bg-twitter hover:text-soft-white");
+            Classes.push("bg-twitter font-semibold hover:bg-twitter hover:text-soft-white text-[#fff]");
         }
 
         if(icon !== undefined){

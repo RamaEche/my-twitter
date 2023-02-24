@@ -16,10 +16,6 @@ function NotificationsFeed() {
         }
     }, [user])
 
-    useEffect(()=>{
-        console.log(notification)
-    }, [notification])
-
     return (
         <div>
             {notification && notification.map((item, index) => (

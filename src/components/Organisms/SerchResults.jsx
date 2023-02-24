@@ -24,7 +24,7 @@ function SerchResults({ inputState, items, onUnFocus, panelState, setPanelState 
                     <p className=" text-mega-soft-black mt-5 font-arial text-center text-base">Try searching for people, topics, or keywords</p>
                 ) : (
                     items.map((item, index)=>(
-                        <a href={`http://localhost:5173/${item.userName}`} key={index} className=" w-full h-[100px] flex text-center text-white font-arial hover:bg-super-soft-black">
+                        <a href={`http://localhost:5173/${item.userName}`} key={index} className=" w-full h-[100px] flex text-center text-white font-arial hover:bg-soft-black">
                             <img className="w-[100px] h-[100px] rounded-full p-4" src={item.img} />
                             <div className="flex flex-col items-start justify-center">
                                 <p className=' font-semibold text-lg leading-5'>{item.userAllName}</p>

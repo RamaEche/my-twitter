@@ -78,7 +78,7 @@ function Home({ setTitle }) {
             <Section elements={[
                 <FeedSelector feedState={feedState} setFeedState={state=>setFeedState(state)} newPosts={newPosts}/>,
                 <TweetInput/>,
-                <div className='w-full border-b-2 border-b-super-soft-black'></div>,
+                <div className='w-full border-b-2 border-b-soft-black'></div>,
                 <ShowMoreTweets ShowNewPosts={ShowNewPosts}/>,
                 <Feed newPosts={newPosts}/>]}/>
             <Article elements={[<SerchBar/>, <Conditions />]}/>

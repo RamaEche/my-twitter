@@ -105,12 +105,12 @@ function UserProfile({buttonSelected, chaneFeed}) {
 
     return (
         <div>
-            <div className={banerImg == undefined ? " w-[697.78px] h-[232.59px] bg-super-soft-black" : ""}>
+            <div className={banerImg == undefined ? " w-[697.78px] h-[232.59px] bg-soft-black" : ""}>
                 <img src={banerImg} alt=""/>
             </div>
             { userAccount ?(
                 <div className='flex items-center justify-end w-full h-[70px]'>
-                    <a href='http://localhost:5173/settings' className='border-[1px] border-super-soft-black h-[40px] w-[130px] mr-4 rounded-full text-white flex items-center justify-center font-semibold'><p>Edit profile</p></a>
+                    <a href='http://localhost:5173/settings' className='border-[1px] border-soft-black h-[40px] w-[130px] mr-4 rounded-full text-white flex items-center justify-center font-semibold'><p>Edit profile</p></a>
                 </div>
             )
             :
@@ -124,7 +124,7 @@ function UserProfile({buttonSelected, chaneFeed}) {
                 ://unfollow user
                 (
                 <div className='flex items-center justify-end w-full h-[70px]'>
-                    <div onClick={()=>alert('unfollow')} onMouseOver={()=>followingButtonTextOver()} onMouseOut={()=>followingButtonTextOut()} className='border-[1px] border-super-soft-black h-[40px] w-[130px] mr-4 rounded-full text-white hover:text-red hover:border-red hover:bg-red hover:bg-opacity-10 flex items-center justify-center font-semibold'><p>{followingButtonText}</p></div>
+                    <div onClick={()=>alert('unfollow')} onMouseOver={()=>followingButtonTextOver()} onMouseOut={()=>followingButtonTextOut()} className='border-[1px] border-soft-black h-[40px] w-[130px] mr-4 rounded-full text-white hover:text-red hover:border-red hover:bg-red hover:bg-opacity-10 flex items-center justify-center font-semibold'><p>{followingButtonText}</p></div>
                 </div>
                 )
             )
@@ -132,7 +132,7 @@ function UserProfile({buttonSelected, chaneFeed}) {
             <div className=' flex justify-between'>
                 <div className=' text-white ml-5 mt-6'>
                     <h1 className=' text-[22px] font-bold'>{allName}</h1>
-                    <p className=' text-super-soft-black'>{tag}</p>
+                    <p className=' text-soft-black'>{tag}</p>
                     <br/>
                     <p>{biography}</p>
                     <div className='flex text-mega-soft-black items-center mt-2'><BiCalendar/><p className=' ml-1'>Joined {joinded}</p></div>
@@ -147,29 +147,29 @@ function UserProfile({buttonSelected, chaneFeed}) {
                     </div>
                 </div>
             </div>
-            <div className='w-full h-[60px] border-b-2 border-super-soft-black flex justify-evenly mt-4'>
-                <div onClick={()=>chaneFeed("Tweets")} className=' hover:bg-mygray text-mygray-soft font-normal flex justify-center flex-col px-[55px]'>
+            <div className='w-full h-[60px] border-b-2 border-soft-blackk flex justify-evenly mt-4'>
+                <div onClick={()=>chaneFeed("Tweets")} className=' hover:bg-mygray text-mega-soft-black font-normal flex justify-center flex-col px-[55px]'>
                     <div className='flex flex-col h-full justify-between'>
                         <div className='h-[9px]'></div>
                         <p className={buttonSelected == "Tweets" ? "text-white font-semibold" : ""}>Tweets</p>
                         <div className={buttonSelected == "Tweets" ?  "h-[4.5px] bg-twitter rounded-full" : 'h-[4.5px]'}></div>
                     </div>
                 </div>
-                <div onClick={()=>chaneFeed("Tweets & replies")} className=' hover:bg-mygray text-mygray-soft font-normal flex justify-center flex-col px-[55px]'>
+                <div onClick={()=>chaneFeed("Tweets & replies")} className=' hover:bg-mygray text-mega-soft-black font-normal flex justify-center flex-col px-[55px]'>
                     <div className='flex flex-col h-full justify-between'>
                         <div className='h-[9px]'></div>
                         <p className={buttonSelected == "Tweets & replies" ? "text-white font-semibold" : ""}>Tweets & replies</p>
                         <div className={buttonSelected == "Tweets & replies" ?  "h-[4.5px] bg-twitter rounded-full" : 'h-[4.5px]'}></div>
                     </div>
                 </div>
-                <div onClick={()=>chaneFeed("Media")} className=' hover:bg-mygray text-mygray-soft font-normal flex justify-center flex-col px-[55px]'>
+                <div onClick={()=>chaneFeed("Media")} className=' hover:bg-mygray text-mega-soft-black font-normal flex justify-center flex-col px-[55px]'>
                     <div className='flex flex-col h-full justify-between'>
                         <div className='h-[9px]'></div>
                         <p className={buttonSelected == "Media" ? "text-white font-semibold" : ""}>Media</p>
                         <div className={buttonSelected == "Media" ?  "h-[4.5px] bg-twitter rounded-full" : 'h-[4.5px]'}></div>
                     </div>
                 </div>
-                <div onClick={()=>chaneFeed("Likes")} className=' hover:bg-mygray text-mygray-soft font-normal hoverButton transition-all flex justify-center flex-col px-[55px]'>
+                <div onClick={()=>chaneFeed("Likes")} className=' hover:bg-mygray text-mega-soft-black font-normal hoverButton transition-all flex justify-center flex-col px-[55px]'>
                     <div className='flex flex-col h-full justify-between'>
                         <div className='h-[9px]'></div>
                         <p className={buttonSelected == "Likes" ? "text-white font-semibold" : ""}>Likes</p>

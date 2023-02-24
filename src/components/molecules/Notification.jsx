@@ -7,7 +7,7 @@ import { BsPerson } from "react-icons/bs";
 function Notification({ content, img, fullDate }) {
 
     return (
-        <div className=' flex text-white border-b-[1px] border-super-soft-black'>
+        <div className=' flex text-white border-b-[1px] border-soft-black'>
             <div className=' text-[30px] my-5 ml-12 mr-5'>{img == 'post' ? <FaComment/> : img == 'like' ? <AiFillHeart/> : <BsTwitter/>}</div>
             <div>
                 <div className=' text-lg mr-14 mt-4'>{content}</div>

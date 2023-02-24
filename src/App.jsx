@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Route, Routes, useLocation } from "react-router-dom";
 import Cookies from 'js-cookie';
 
@@ -19,6 +19,7 @@ import ManagerAcountAlert from './components/templates/ManagerAcountAlert'
 import TweetAlert from "./components/templates/TweetAlert";
 
 function App() {
+    const [display, setDisplay] = useState();
     const [acountOpen, setAcountOpen] = useState();
     const [user, setUser] = useState();
     const location = useLocation();
@@ -26,6 +27,82 @@ function App() {
     const [showTweetAlert, setShowTweetAlert]  = useState(false);
     const handleStateTweetAlert = state => setShowTweetAlert(state);
     
+    useLayoutEffect(()=>{
+        fetch('http://localhost:3000/accounts')
+        .then(response => response.json())
+        .then(info => {
+            for (let i = 0; i < info.length; i++) {
+                if(Cookies.get('sessionId') == info[i].sessionid){
+                    const root = document.documentElement;
+                    switch (info[i].settings.display.background) {
+                        case 'white':
+                            root.style.setProperty('--color-background', '#fff');
+                            root.style.setProperty('--color-background-1', '#000');
+                            root.style.setProperty('--color-background-2', '#ddd');
+                            root.style.setProperty('--color-background-3', '#777');
+                            root.style.setProperty('--color-background-4', '#f3f3f3');
+                            root.style.setProperty('--color-background-5', '#eee');
+                        break;
+
+                        case 'dim':
+                            root.style.setProperty('--color-background', '#15202B');
+                            root.style.setProperty('--color-background-1', '#F1F4F4');
+                            root.style.setProperty('--color-background-2', '#2F3842');
+                            root.style.setProperty('--color-background-3', '#75828F');
+                            root.style.setProperty('--color-background-4', '#0F1722');
+                            root.style.setProperty('--color-background-5', '#182735');
+                        break;
+                        case 'dark':
+                            root.style.setProperty('--color-background', '#000');
+                            root.style.setProperty('--color-background-1', '#fff');
+                            root.style.setProperty('--color-background-2', '#222');
+                            root.style.setProperty('--color-background-3', '#777');
+                            root.style.setProperty('--color-background-4', '#16181C');
+                            root.style.setProperty('--color-background-5', '#080808');
+                        break;
+                                
+                        default:
+                        break;
+                    }
+
+                    switch (info[i].settings.display.color) {
+                        case 'lightBlue':
+                            root.style.setProperty('--color-accent', '#1D9BF0');
+                            root.style.setProperty('--color-accent-1', '#A0C5DF');
+                        break;
+
+                        case 'yellow':
+                            root.style.setProperty('--color-accent', '#FFD400');
+                            root.style.setProperty('--color-accent-1', '#FBEEAF');
+                        break;
+
+                        case 'pink':
+                            root.style.setProperty('--color-accent', '#F91880');
+                            root.style.setProperty('--color-accent-1', '#F9A1CA');
+                        break;
+
+                        case 'greyBlue':
+                            root.style.setProperty('--color-accent', '#7856FF');
+                            root.style.setProperty('--color-accent-1', '#BAA9FD');
+                        break;
+
+                        case 'orange':
+                            root.style.setProperty('--color-accent', '#FF7A00');
+                            root.style.setProperty('--color-accent-1', '#FEC590');
+                        break;
+
+                        case 'green':
+                            root.style.setProperty('--color-accent', '#00BA7C');
+                            root.style.setProperty('--color-accent-1', '#B2D1C7');
+                        break;
+
+                        default:
+                        break;
+                    }
+                }
+            }
+        })
+    })
     useEffect(() => {
         fetch('http://localhost:3000/accounts')
         .then(response => response.json())

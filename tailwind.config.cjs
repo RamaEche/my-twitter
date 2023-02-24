@@ -10,19 +10,21 @@ module.exports = {
      'arial' : ['arial', 'sans-serif']
    },
    colors:{
-     'black' : '#000000',
-     'soft-black' : '#111111',
-     'super-soft-black':'#333333',
-     'mega-soft-black':'#777777',
-     'mygray':"#16181C",
-     'mygray-soft':"#6e6e6e",
-     'white' : '#ffffff',
+     'black' : 'var(--color-background)',
+     'white' : 'var(--color-background-1)',
+     'soft-black' : 'var(--color-background-2)',
+     'mega-soft-black':'var(--color-background-3)',
+     'mygray':'var(--color-background-4)',
+     'min-soft-black' : 'var(--color-background-5)',
+     
+     'twitter' : "var(--color-accent)",
+     'twitter-gray' : "var(--color-accent-1)",
+     
      'soft-white' : '#eeeeee',
-     'twitter' : "#1D9BF0",
-     'twitter-gray' : "#A0C5DF",
-     'min-soft-black' : '#080808',
      'red' : "#F4212E"
    }
  },
  plugins: [],
 }
+
+//var()

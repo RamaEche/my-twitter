@@ -68,7 +68,7 @@ function TweetInput() {
             <div className=' w-full p-5'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='text resize-none'>
-                        <textarea {...register("text", { required: true })} type='text' placeholder='Whats happening?' className=' w-full resize-y h-12 max-h-[40vh] overflow-hidden bg-black pt-4 pb-3 text-xl placeholder:text-super-soft-black focus:outline-none text-white'></textarea>
+                        <textarea {...register("text", { required: true })} type='text' placeholder='Whats happening?' className=' w-full resize-y h-12 max-h-[40vh] overflow-hidden bg-black pt-4 pb-3 text-xl placeholder:text-soft-black focus:outline-none text-white'></textarea>
                     </div>
                     <div className=' flex'>
                         <div className=' flex w-full items-center'>
