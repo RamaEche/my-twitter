@@ -16,7 +16,7 @@ function Lists({ setTitle }) {
     const [userIsReady, setUserIsReady] = useState(false);
 
     const {user, setUser} = useContext(UserContext);
-    setTitle(`Lists created by @${"hola"} / Twitter`);
+    setTitle(`Lists / Twitter`);
 
     useEffect(()=>{
         const getPosts = async ()=>{
@@ -45,8 +45,8 @@ function Lists({ setTitle }) {
     
             for (let i = 0; i < userListsPosts.length; i++) {
                 for (let j = 0; j < AllPosts.length; j++) {
-                    if (AllPosts[userListsPosts[i]].PostId == AllPosts[j].PostId) {
-                        currentListsPosts.push(AllPosts[i]);
+                    if (userListsPosts[i] == AllPosts[j].PostId) {
+                        currentListsPosts.push(AllPosts[j]);
                         break;
                     }
                 }
@@ -66,7 +66,7 @@ function Lists({ setTitle }) {
     },[user])
     return (
         <>
-            <Section elements={[<SectionHeader title='Lists:'/>, <Feed newPosts={posts}/>]}/>
+            <Section elements={[<SectionHeader title='Lists:'/>, <Feed newPosts={posts} restPxHeight={64}/>]}/>
             <Article elements={[<SerchBar />, <Conditions />]}/>
         </>
     )

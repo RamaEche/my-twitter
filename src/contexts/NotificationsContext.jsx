@@ -37,6 +37,8 @@ const createNotificationContext  = createContext(async (content, img)=>{
       .catch(error => {
         console.error('Error:', error);
       });
+
+  console.log('notification')
 });
 
 export default createNotificationContext;

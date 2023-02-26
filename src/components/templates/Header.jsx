@@ -15,7 +15,8 @@ import AccountsButton from '../atoms/AccountsButton'
 function Header() {
     const {showTweetAlert, setShowTweetAlert, handleStateTweetAlert} = useContext(TweetAlertContext);
     const {user, setUser} = useContext(UserContext)
-    const [userName, setUserName] = useState("http://localhost:5173/a");
+    const [allUserName, setAllUserName] = useState("");
+    const [userName, setUserName] = useState("");
     const [panelState, setPanelState] = useState(false);
     const changePanel = state=> setPanelState(state);
     const LogOut = ()=>{
@@ -24,7 +25,17 @@ function Header() {
     }
 
     useEffect(()=>{
-        user != undefined && setUserName(user.username);
+        if(user != undefined){
+            setUserName(user.username);
+
+            let name = user.userAllName.split('');
+            if(name.length >= 14){
+                name.splice(13, name.length, '');
+                name.push("...")
+            }
+            let fullName = name.join("");
+            setAllUserName(fullName)
+        }
     },[user])
 
     return (
@@ -48,10 +59,10 @@ function Header() {
                     </div>
                 </div>
                 <button onClick={()=>changePanel(true)} className=' hover:bg-background-4 rounded-full flex items-center py-3 min-w-[270px] justify-center mb-3'>
-                    <img src="https://xsgames.co/randomusers/assets/avatars/male/70.jpg" className=' ml-4 rounded-full h-[50px]'/>
+                    <img src={user != undefined ? user.img : ""} className=' ml-4 rounded-full h-[50px]'/>
                     <div className='flex flex-col ml-4 items-start text-base leading-[22px]'>
-                        <p className=' text-background-1 font-semibold'>Fangames en esp..</p>
-                        <p className=' text-background-3'>@FangamesE</p>
+                        <p className=' text-background-1 font-semibold'>{allUserName}</p>
+                        <p className=' text-background-3'>@{userName}</p>
                     </div>
                     <RiMoreFill className=' text-background-1 mx-4 text-[23px]'/>
                 </button>

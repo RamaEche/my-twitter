@@ -182,7 +182,7 @@ function User({ setTitle }) {
         <>
             <Section elements={[<SectionHeader title={fullName}/>,
             <UserProfile buttonSelected={buttonSelected} chaneFeed={chaneFeed}/>,
-            <Feed newPosts={ posts }/>]}/>
+            <Feed newPosts={ posts } restPxHeight={637}/>]}/>
             <Article elements={[<SerchBar />, <Conditions />]}/>
         </>
     )

@@ -162,7 +162,7 @@ function App() {
             <TweetAlertContext.Provider value={{showTweetAlert, setShowTweetAlert, handleStateTweetAlert}}>
                 <UserContext.Provider value={{user, setUser}}>
                     <LogedContext.Provider value={{acountOpen, setAcountOpen}}>
-                        <div className=" bg-black flex justify-center h-full m-0 p-0 font-arial">
+                        <div className=" bg-background flex justify-center h-full m-0 p-0 font-arial">
                             {acountOpen ?(
                                 <>
                                     <Header/>
@@ -196,7 +196,6 @@ function App() {
                                             <Route path='/explore' element={<ExploreLogOut/>}/>
                                         </>
                                     )}
-                                    //crear 404
                                 </Routes>
                             </div>
                         </div>

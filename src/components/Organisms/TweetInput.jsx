@@ -7,7 +7,7 @@ import UserContext from '../../contexts/UserContext'
 import { BiImageAlt } from "react-icons/bi";
 import { HiOutlineGif } from "react-icons/hi2";
 
-function TweetInput() {
+function TweetInput({ comentedForm = null }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const createNotification = useContext(createNotificationContext)
     const {user, setUser} = useContext(UserContext);
@@ -25,15 +25,14 @@ function TweetInput() {
         }
         setImageFromUser()
     },[user])
-    const onSubmit = async (data) =>{
+    const onSubmit = async (data) =>{       
         let newUser = null;
         let LastPostId = null;
         await fetch(`http://localhost:3000/posts`)
         .then(response => response.json())
         .then(info=>{
-            LastPostId = info;
+            LastPostId = info[0].lastPostId;
         })
-
         await fetch(`http://localhost:3000/users/${user.id}`)
         .then(response => response.json())
         .then(info=>{
@@ -56,7 +55,7 @@ function TweetInput() {
         newUser.content.posts.push({
             PostId: LastPostId + 1,
             comments:[],
-            commentFrom: null,                                                           //falta
+            commentFrom: comentedForm,
             username: newUser.username,
             allUserName: newUser.userAllName,
             img: newUser.img,
@@ -69,9 +68,57 @@ function TweetInput() {
             dateInMilliseconds: MiliseconsFromEpoch
         })
 
-        await fetch(`http://localhost:3000/posts`,{
+        let Comentuser;
+        if (comentedForm != null) {
+            let post;
+            await fetch(`http://localhost:3000/users/${comentedForm.userId}`)
+            .then(response => response.json())
+            .then(info=>{
+                Comentuser = info;
+                for (let i = 0; i < info.content.posts.length; i++) {
+                    if (info.content.posts[i].PostId == comentedForm.PostId) {
+                        post = info.content.posts[i];
+                    }
+                }
+            })
+
+            post.comments.push({
+                userId: newUser.id,
+                PostId: LastPostId + 1
+            })
+            if(comentedForm.userId == newUser.id){
+                for (let i = 0; i < newUser.content.posts.length; i++) {
+                    if (newUser.content.posts[i].PostId == post.PostId) {
+                        newUser.content.posts[i].comments = post.comments;
+                    }
+                }
+            }else{
+                for (let i = 0; i < Comentuser.content.posts.length; i++) {
+                    if (Comentuser.content.posts[i].PostId == post.PostId) {
+                        Comentuser.content.posts[i].comments = post.comments;
+                    }
+                }
+            }
+
+            console.log(comentedForm)
+            if(comentedForm.userId !== newUser.id){
+                await fetch(`http://localhost:3000/users/${comentedForm.userId}`,{
+                    method:'PUT',
+                    body: JSON.stringify(Comentuser),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            }
+        }
+
+        let posts ={
+            id:1,
+            lastPostId : LastPostId + 1
+        }
+        await fetch(`http://localhost:3000/posts/1`,{
             method:'PUT',
-            body: JSON.stringify( LastPostId + 1),
+            body: JSON.stringify(posts),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -86,7 +133,7 @@ function TweetInput() {
         })
         .then(response => {
             if (response.ok) {
-              createNotification(`Tweet created: "${data.text}"`, "Twitter");
+
             } else {
               console.error('Failed to create post');
             }
@@ -94,7 +141,10 @@ function TweetInput() {
         .catch(error => {
             console.error('Error:', error);
         });
+
+        await createNotification(`Tweet created: "${data.text}"`, "Twitter");
         location.reload();
+        
     }
 
     return (
@@ -109,8 +159,6 @@ function TweetInput() {
                     </div>
                     <div className=' flex'>
                         <div className=' flex w-full items-center'>
-                            <BiImageAlt className=' text-accent w-6 h-6 rounded-full mx-1'/>
-                            <HiOutlineGif className=' text-accent w-6 h-6 rounded-full mx-1'/>
                         </div>
                         <input value='Tweet' type="submit" className=' text-background-6 bg-accent p-2 px-6 font-semibold rounded-full'></input>
                     </div>

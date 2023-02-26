@@ -41,7 +41,9 @@ function Home({ setTitle }) {
             let currentPosts = []
             for (let i = 0; i < info.length; i++) {
                 for (let j = 0; j < info[i].content.posts.length; j++) {
-                    currentPosts.push(info[i].content.posts[j]);
+                    if(info[i].content.posts[j].commentFrom == null){
+                        currentPosts.push(info[i].content.posts[j]);
+                    }
                 }
             }
             if (newPosts !== currentPosts) {
@@ -64,7 +66,9 @@ function Home({ setTitle }) {
             .then(response => response.json())
             .then(infoFromCurentUser=>{
                 for (let i = 0; i < infoFromCurentUser.content.posts.length; i++) {
-                    currentPosts.push(infoFromCurentUser.content.posts[i]);
+                    if(infoFromCurentUser.content.posts[i].commentFrom == null){
+                        currentPosts.push(infoFromCurentUser.content.posts[i]);
+                    }
                 }
             })
         }
@@ -80,7 +84,7 @@ function Home({ setTitle }) {
                 <TweetInput/>,
                 <div className='w-full border-b-2 border-b-background-2'></div>,
                 <ShowMoreTweets ShowNewPosts={ShowNewPosts}/>,
-                <Feed newPosts={newPosts}/>]}/>
+                <Feed newPosts={newPosts} restPxHeight={340}/>]}/>
             <Article elements={[<SerchBar/>, <Conditions />]}/>
         </>
     )

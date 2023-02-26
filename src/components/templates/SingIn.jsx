@@ -69,7 +69,7 @@ function SingIn({ className, close }) {
             settings:{
               display:{
                 color: "lightBlue",
-                background: "dark"
+                background: "white"
               }
             }
           }),

@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import './Post.css'
 
@@ -11,7 +11,7 @@ import { RiFileListLine } from "react-icons/ri";
 
 import UserContext from '../../contexts/UserContext'
 
-function Post({img, userAllName, userName, date, content, postId}) {
+function Post({img, userAllName, userName = "a", date, content, postId}) {
     const {user, setUser} = useContext(UserContext);
     const [liked, setLiked] = useState(false);
     const [retweeted, setRetweeted] = useState(false);
@@ -24,61 +24,61 @@ function Post({img, userAllName, userName, date, content, postId}) {
     const [viewsCount, setViewsCount] = useState();
     const [inList, setInList] = useState(false);
 
-    useLayoutEffect(()=>{
-        let postUser;
-
-        fetch(`http://localhost:3000/users`)
-        .then(response => response.json())
-        .then(info=>{
-            for (let i = 0; i < info.length; i++) {
-                if (info[i].username == userName) {
-                    postUser = info[i];                    
-                    for (let j = 0; j < postUser.content.posts.length; j++) {
-                        if (postUser.content.posts[j].PostId == postId) {
-                            if(postUser.id == user.id){
-                                setIsPostOwner(true);
-                            }
-
-                            if (postUser.content.posts[j].likesUserId.includes(user.id)) {
-                                setLiked(true);
-                            }else{
-                                setLiked(false);
-                            }
-
-                            if (postUser.content.posts[j].retweetsUsersId.includes(user.id)) {
-                                setRetweeted(true);
-                            }else{
-                                setRetweeted(false);
-                            }
-
-                            if (user.content.lists.includes(postUser.content.posts[j].PostId)) {
-                                setInList(true);
-                            }else{
-                                setInList(false);
-                            }
-
-                            if(!postUser.content.posts[j].viewsUserId.includes(user.id)){
-                                postUser.content.posts[j].viewsUserId.push(user.id)
-                            }
-                            
-                            fetch(`http://localhost:3000/users/${postUser.id}`,{
-                                method:'PUT',
-                                body: JSON.stringify(postUser),
-                                headers: {
-                                    'Content-Type': 'application/json'
+    useEffect(()=>{
+        if (userName != undefined) {
+            let postUser;
+            fetch(`http://localhost:3000/users`)
+            .then(response => response.json())
+            .then(info=>{
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].username == userName) {
+                        postUser = info[i];                    
+                        for (let j = 0; j < postUser.content.posts.length; j++) {
+                            if (postUser.content.posts[j].PostId == postId) {
+                                if(postUser.id == user.id){
+                                    setIsPostOwner(true);
                                 }
-                            })
 
-                            setCommentsCount(postUser.content.posts[j].comments.length);
-                            setLikedCount(postUser.content.posts[j].likesUserId.length);
-                            setRetweetedCount(postUser.content.posts[j].retweetsUsersId.length);
-                            setViewsCount(postUser.content.posts[j].viewsUserId.length);
-                        }
-                    }   
+                                if (postUser.content.posts[j].likesUserId.includes(user.id)) {
+                                    setLiked(true);
+                                }else{
+                                    setLiked(false);
+                                }
+
+                                if (postUser.content.posts[j].retweetsUsersId.includes(user.id)) {
+                                    setRetweeted(true);
+                                }else{
+                                    setRetweeted(false);
+                                }
+
+                                if (user.content.lists.includes(postUser.content.posts[j].PostId)) {
+                                    setInList(true);
+                                }else{
+                                    setInList(false);
+                                }
+
+                                if(!postUser.content.posts[j].viewsUserId.includes(user.id)){
+                                    postUser.content.posts[j].viewsUserId.push(user.id)
+                                    fetch(`http://localhost:3000/users/${postUser.id}`,{
+                                        method:'PUT',
+                                        body: JSON.stringify(postUser),
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                }
+
+                                setCommentsCount(postUser.content.posts[j].comments.length);
+                                setLikedCount(postUser.content.posts[j].likesUserId.length);
+                                setRetweetedCount(postUser.content.posts[j].retweetsUsersId.length);
+                                setViewsCount(postUser.content.posts[j].viewsUserId.length);
+                            }
+                        }   
+                    }
                 }
-            }
-        })
-    },[])
+            })
+        }
+    },[userName])
     const changeLikePost = async()=>{
         if(liked){
             let postUser;

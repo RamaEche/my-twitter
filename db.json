@@ -10,15 +10,15 @@
       "password": "12345",
       "settings": {
         "display": {
-          "color": "lightBlue",
-          "background": "white"
+          "color": "pink",
+          "background": "dim"
         }
       }
     },
     {
       "id": 2,
       "userId": 2,
-      "sessionid": "45p15p532",
+      "sessionid": "p325p4155",
       "email": "pepe@gmail.com",
       "username": "pepe",
       "userAllName": "User_pepe",
@@ -26,7 +26,7 @@
       "settings": {
         "display": {
           "color": "lightBlue",
-          "background": "white"
+          "background": "dim"
         }
       }
     }
@@ -35,78 +35,60 @@
     {
       "id": 1,
       "username": "ramiro",
-      "userAllName": "User_ramiro",
+      "userAllName": "Ramiro Echevarria",
       "biography": "Hello, i am new on twitter.",
       "img": "http://localhost:5173/defaultImage.png",
       "banerImg": "",
       "Joinded": "25 February 2023",
-      "Following": [],
+      "Following": [
+        2
+      ],
       "Followers": [],
       "notifications": [
         {
-          "content": "Tweet created: \"Hola\"",
+          "content": "Tweet created: \"Hello Twitter\"",
           "img": "Twitter",
-          "fullDate": "25 February 2023"
-        },
-        {
-          "content": "Tweet created: \"wawa\"",
-          "img": "Twitter",
-          "fullDate": "25 February 2023"
+          "fullDate": "26 February 2023"
         }
       ],
       "content": {
         "posts": [
           {
-            "PostId": 0,
-            "comments": [],
-            "commentFrom": null,
-            "username": "ramiro",
-            "allUserName": "User_ramiro",
-            "img": "http://localhost:5173/defaultImage.png",
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [
-              1,
-              2
-            ],
-            "content": "a",
-            "contentImage": null,
-            "date": "25 February 2023",
-            "dateInMilliseconds": 1677370120074
-          },
-          {
             "PostId": 1,
-            "comments": [],
+            "comments": [
+              {
+                "userId": 2,
+                "PostId": 2
+              }
+            ],
             "commentFrom": null,
             "username": "ramiro",
-            "allUserName": "User_ramiro",
+            "allUserName": "Ramiro Echevarria",
             "img": "http://localhost:5173/defaultImage.png",
             "retweetsUsersId": [],
-            "likesUserId": [],
+            "likesUserId": [
+              2
+            ],
             "viewsUserId": [
               1,
               2
             ],
-            "content": "b",
+            "content": "Hello Twitter",
             "contentImage": null,
-            "date": "25 February 2023",
-            "dateInMilliseconds": 1677370188294
+            "date": "26 February 2023",
+            "dateInMilliseconds": 1677444269677
           }
         ],
         "reTweetedPosts": [
           {
-            "userId": 1,
-            "PostId": 0
+            "userId": 2,
+            "PostId": 2
           }
         ],
         "likes": [
           {
-            "userId": 1,
-            "PostId": 0
-          },
-          {
-            "userId": 1,
-            "PostId": 0
+            "userId": 2,
+            "PostId": 2
           }
         ],
         "lists": []
@@ -119,67 +101,63 @@
       "biography": "Hello, i am new on twitter.",
       "img": "http://localhost:5173/defaultImage.png",
       "banerImg": "",
-      "Joinded": "25 February 2023",
-      "Following": [],
+      "Joinded": "26 February 2023",
+      "Following": [
+        1
+      ],
       "Followers": [],
-      "notifications": [],
+      "notifications": [
+        {
+          "content": "Tweet created: \"Hello Ramiro, How are u?\"",
+          "img": "Twitter",
+          "fullDate": "26 February 2023"
+        }
+      ],
       "content": {
         "posts": [
           {
             "PostId": 2,
             "comments": [],
-            "commentFrom": null,
+            "commentFrom": {
+              "userId": 1,
+              "PostId": 1
+            },
             "username": "pepe",
             "allUserName": "User_pepe",
             "img": "http://localhost:5173/defaultImage.png",
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [
-              2
+            "retweetsUsersId": [
+              1
             ],
-            "content": "c",
-            "contentImage": null,
-            "date": "25 February 2023",
-            "dateInMilliseconds": 1677370222019
-          },
-          {
-            "PostId": 3,
-            "comments": [],
-            "commentFrom": null,
-            "username": "pepe",
-            "allUserName": "User_pepe",
-            "img": "http://localhost:5173/defaultImage.png",
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [],
-            "content": "d",
-            "contentImage": null,
-            "date": "25 February 2023",
-            "dateInMilliseconds": 1677370881014
-          },
-          {
-            "PostId": 4,
-            "comments": [],
-            "commentFrom": null,
-            "username": "pepe",
-            "allUserName": "User_pepe",
-            "img": "http://localhost:5173/defaultImage.png",
-            "retweetsUsersId": [],
-            "likesUserId": [],
-            "viewsUserId": [
-              2
+            "likesUserId": [
+              1
             ],
-            "content": "e",
+            "viewsUserId": [
+              2,
+              1
+            ],
+            "content": "Hello Ramiro, How are u?",
             "contentImage": null,
-            "date": "25 February 2023",
-            "dateInMilliseconds": 1677371270706
+            "date": "26 February 2023",
+            "dateInMilliseconds": 1677444463250
           }
         ],
         "reTweetedPosts": [],
-        "likes": [],
-        "lists": []
+        "likes": [
+          {
+            "userId": 1,
+            "PostId": 1
+          }
+        ],
+        "lists": [
+          1
+        ]
       }
     }
   ],
-  "posts": 4
+  "posts": [
+    {
+      "id": 1,
+      "lastPostId": 2
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BsCheck } from "react-icons/bs";
 import Cookies from 'js-cookie'
 
@@ -14,12 +14,11 @@ function DisplaySettings() {
 
     const {colorMode, setColorMode} = useContext(ColorModeContext);
 
-    useLayoutEffect(()=>{
-        chargeLastSaved();
-    }, [])
+    useEffect(()=>{
+        colorMode != undefined && chargeLastSaved();
+    }, [colorMode])
 
     const onChangeWiteCheckbox = e=>{
-        console.log('white', e.target.checked)
         if(e.target.checked == true) {
             setBgSelected("white");
             setWhiteCheckbox(true);
@@ -29,7 +28,6 @@ function DisplaySettings() {
     }
 
     const onChangeDimCheckbox = e=>{
-        console.log('dim', e.target.checked)
         if(e.target.checked == true) {
             setBgSelected("dim");
             setWhiteCheckbox(false);
@@ -39,9 +37,8 @@ function DisplaySettings() {
     }
 
     const onChangelightsOutCheckbox = e=>{
-        console.log('lightsOut', e.target.checked)
         if(e.target.checked == true) {
-            setBgSelected("lightsOut");
+            setBgSelected("dark");
             setWhiteCheckbox(false);
             setDimCheckbox(false);
             setLightsOutCheckbox(true);
@@ -51,18 +48,21 @@ function DisplaySettings() {
     const chargeLastSaved = ()=>{
         switch (colorMode.background) {
             case "white":
+                setBgSelected("white");
                 setWhiteCheckbox(true);
                 setDimCheckbox(false);
                 setLightsOutCheckbox(false);
             break;
             
             case "dim":
+                setBgSelected("dim");
                 setWhiteCheckbox(false);
                 setDimCheckbox(true);
                 setLightsOutCheckbox(false);
             break;
             
             case "dark":
+                setBgSelected("dark");
                 setWhiteCheckbox(false);
                 setDimCheckbox(false);
                 setLightsOutCheckbox(true);
@@ -111,7 +111,7 @@ function DisplaySettings() {
                 <button onClick={()=>setColorSelected("lightBlue")} className=' w-[40px] h-[40px] bg-[#1D9BF0] rounded-full'>{colorSelected == "lightBlue" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
                 <button onClick={()=>setColorSelected("yellow")} className=' w-[40px] h-[40px] bg-[#FFD400] rounded-full'>{colorSelected == "yellow" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
                 <button onClick={()=>setColorSelected("pink")} className=' w-[40px] h-[40px] bg-[#F91880] rounded-full'>{colorSelected == "pink" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
-                <button onClick={()=>setColorSelected("purple")} className=' w-[40px] h-[40px] bg-[#7856FF] rounded-full'>{colorSelected == "purple" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
+                <button onClick={()=>setColorSelected("greyBlue")} className=' w-[40px] h-[40px] bg-[#7856FF] rounded-full'>{colorSelected == "greyBlue" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
                 <button onClick={()=>setColorSelected("orange")} className=' w-[40px] h-[40px] bg-[#FF7A00] rounded-full'>{colorSelected == "orange" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
                 <button onClick={()=>setColorSelected("green")} className=' w-[40px] h-[40px] bg-[#00BA7C] rounded-full'>{colorSelected == "green" && <BsCheck className=' text-[#fff] relative left-[4.5px] top-[1px] text-[30px]'/>}</button>
             </div>

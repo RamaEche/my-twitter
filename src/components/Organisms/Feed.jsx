@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 
 import Post from '../molecules/Post';
 
-function Feed({ newPosts }) {
+function Feed({ newPosts, restPxHeight = '100' }) {
     const [posts, setPosts] = useState([]);
     const [messyPosts, setMessyPosts] = useState([]);
 
@@ -11,11 +11,17 @@ function Feed({ newPosts }) {
         let finalPostsOrder = newPosts;
         finalPostsOrder.sort((a, b) => b.dateInMilliseconds - a.dateInMilliseconds);
         setPosts(finalPostsOrder);
+
+        let phHeigt = restPxHeight;
+        const contenedoresPadre = document.querySelectorAll(`.feed-container-${restPxHeight}`);
+        for (let i = 0; i < contenedoresPadre.length; i++) {
+          contenedoresPadre[i].style.height = `calc(100vh - ${restPxHeight}px)`;
+        }
       }
     }, [newPosts])
 
     return (
-      <div className=' flex flex-col h-screen overflow-auto scrollbar-none'>
+      <div className={`overflow-y-scroll feed-container-${restPxHeight} scrollbar-none`}>
         {posts !== undefined && posts.map((currentArrayData, index) => (
             <div key={index}>
               <Post
