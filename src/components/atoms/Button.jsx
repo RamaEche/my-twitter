@@ -1,13 +1,17 @@
 import React, {useState, useEffect} from 'react';
 
-function Button({href, text, icon, bold, onClick}){
+function Button({href, text, icon, bold, onClick, color=""}){
 
     const [asignHref, setAsignHref] = useState();
     const [asignText, setAsignText] = useState();
     const [asignIcon, setAsignIcon] = useState();
     let [classNames, setClassNames] = useState();
-    let Classes = ["h-12 flex m-2 px-2 py-7 items-center border-none rounded-full text-white g-black text-xl no-underline w-fit font-arial  hover:bg-soft-black"];
+    let Classes = ["h-12 flex m-2 px-2 py-7 items-center border-none rounded-full text-background-1 g-background text-xl no-underline w-fit font-arial  hover:bg-background-2"];
     useEffect(()=>{
+
+        if( color != "" && color == "twitter") {
+            Classes.push(" text-twitter ");
+        }
 
         if(href !== undefined){
             setAsignHref(href);
@@ -20,7 +24,7 @@ function Button({href, text, icon, bold, onClick}){
         }
 
         if(bold){
-            Classes.push("bg-twitter font-semibold hover:bg-twitter hover:text-soft-white text-[#fff]");
+            Classes.push("bg-accent font-semibold hover:bg-accent hover:text-soft-white text-[#fff]");
         }
 
         if(icon !== undefined){

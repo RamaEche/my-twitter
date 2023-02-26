@@ -19,7 +19,6 @@ const createNotificationContext  = createContext(async (content, img)=>{
     .then(response => response.json())
     .then(info =>{
         user = info;
-        console.log(user)
     })
 
     const date = new Date();

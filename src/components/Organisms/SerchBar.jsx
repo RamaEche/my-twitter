@@ -45,9 +45,9 @@ function SerchBar() {
 
     return (
         <div>
-            <div className=" bg-mygray w-full h-[55px] rounded-[50px] flex">
+            <div className=" bg-background-4 w-full h-[55px] rounded-[50px] flex">
                 <img className="w-[60px] absolute p-4 pl-5" src="https://svgsilh.com/svg/3331255-999999.svg"/>
-                <input ref={serchInput} onChange={handleChange} onFocus={()=>{setSerchBarFocus(true); setPanelState("visible")}} placeholder="Serch Twitter" className=" bg-mygray w-full h-full border-none rounded-[50px] text-white pl-[70px] font-lg placeholder:text-mega-soft-black focus:bg-black outline-twitter outline-1"/>
+                <input ref={serchInput} onChange={handleChange} onFocus={()=>{setSerchBarFocus(true); setPanelState("visible")}} placeholder="Serch Twitter" className=" bg-background-4 w-full h-full border-none rounded-[50px] text-background-1 pl-[70px] font-lg placeholder:text-background-3 focus:bg-background outline-accent outline-1"/>
             </div>
             <SerchResults inputState={serchBarFocus} items={items} onUnFocus={setSerchBarFocus} panelState={panelState} setPanelState={setPanelState}/>
         </div>

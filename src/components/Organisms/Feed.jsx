@@ -21,9 +21,10 @@ function Feed({ newPosts }) {
               <Post
                 img={currentArrayData.img}
                 userAllName={currentArrayData.allUserName}
-                tag={"@" + currentArrayData.username}
+                userName={currentArrayData.username}
                 date={currentArrayData.date}
                 content={currentArrayData.content}
+                postId={currentArrayData.PostId}
               />
             </div>
           )

@@ -11,7 +11,7 @@ function Header() {
         <header className="h-full mr-12">
             <nav className=' flex h-full flex-col justify-between'>
                 <ul className=' list-none'>
-                    <li><Button icon={<GrTwitter/>} href="/explore"/></li>
+                    <li><Button icon={<GrTwitter/>} href="/explore" color="twitter"/></li>
                     <li><Button icon={<BiHash/>} text="Explorar" href="/explore"/></li>
                     <li><Button icon={<RiSettings3Line/>} text="Configuracíon"/></li>
                 </ul>

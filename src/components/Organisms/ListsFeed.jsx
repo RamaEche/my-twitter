@@ -37,6 +37,7 @@ function ListsFeed() {
     
             for (let i = 0; i < userListsPosts.length; i++) {
                 for (let j = 0; j < AllPosts.length; j++) {
+                    console.log(AllPosts)
                     if (AllPosts[userListsPosts[i]].PostId == AllPosts[j].PostId) {
                         currentListsPosts.push(AllPosts[i]);
                         break;

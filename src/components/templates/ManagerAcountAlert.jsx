@@ -12,7 +12,7 @@ function ManagerAcountAlert() {
     
     return (
         <>
-            <div className=' text-white justify-center items-center flex absolute bottom-0 bg-twitter w-[100vw] h-20 shadow-2xl shadow-white'>
+            <div className=' text-background-6 justify-center items-center flex absolute bottom-0 bg-twitter w-[100vw] h-20 shadow-2xl shadow-background-6'>
                 <div className=' h-full w-[300px]'></div>
                 <div className=' h-full w-[700px] flex flex-col justify-center'>
                     <div>
@@ -21,8 +21,8 @@ function ManagerAcountAlert() {
                     </div>
                 </div>
                 <div className=' h-full flex items-center w-[470px]'>
-                        <button onClick={()=>handleCloseLogIn(true)} className=' h-10 w-36 rounded-full font-semibold border-white border-2'>Iniciar Sesión</button>
-                        <button onClick={()=>handleCloseSingIn(true)} className=' h-10 w-36 rounded-full bg-white text-black font-semibold ml-3'>Regístrate</button>
+                        <button onClick={()=>handleCloseLogIn(true)} className=' h-10 w-36 rounded-full font-semibold border-background-6 border-2'>Iniciar Sesión</button>
+                        <button onClick={()=>handleCloseSingIn(true)} className=' h-10 w-36 rounded-full bg-background-6 text-background-1 font-semibold ml-3'>Regístrate</button>
                 </div>
             </div>
             <LogIn className={showLogIn ? " visible" : " invisible"} close={()=>handleCloseLogIn(false)}/>

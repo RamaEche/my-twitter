@@ -12,7 +12,7 @@ import Conditions from "../Organisms/Conditions";
 import Title from "../../hocs/Title";
 
 function User({ setTitle }) {
-    const { user } = useParams()
+    const { userName } = useParams()
     const [userId, setUserId] = useState(null)
 
     const [currentType, setCurrentType] = useState()
@@ -20,17 +20,13 @@ function User({ setTitle }) {
     const [posts, setPosts] = useState([])
     const [fullName, setFullName] = useState("This account doesn't exist")
 
-    const userName = "User";
-    const userAllName = "User User";
-    setTitle(`${userAllName} (@${userName}) / Twitter`);
-
     useEffect(()=>{
         const getUserId = async()=>{
             await fetch(`http://localhost:3000/accounts`)
             .then(response => response.json())
             .then(info=>{
                 for (let i = 0; i < info.length; i++) {
-                    if (info[i].username == user) {
+                    if (info[i].username == userName) {
                         setUserId(info[i].userId)
                     }
                 }
@@ -40,8 +36,28 @@ function User({ setTitle }) {
     }, [])
 
     useEffect(()=>{
-        chaneFeed("Tweets");
+        if(userId != null){
+            chaneFeed("Tweets");
+            ShowUserValues();
+
+        }else if(userId == null){
+            setCurrentType(null);
+            setButtonSelected(null)
+        }
     }, [userId])
+
+    let getCurrentUserInfo = async ()=>{       
+        let response = await fetch(`http://localhost:3000/users/${userId}`)
+        let info = await response.json()        
+        return info;
+    }
+
+    const ShowUserValues = async ()=>{
+        let info = await getCurrentUserInfo();
+
+        setFullName(info.userAllName);
+        setTitle(`${info.userAllName} (@${info.username}) / Twitter`);
+    }
 
     const chaneFeed = type =>{
         if (currentType == type){
@@ -82,14 +98,8 @@ function User({ setTitle }) {
     const ShowTweetsFeed = async ()=>{ // Only user tweets
         let currentPosts = [];
 
-        await fetch(`http://localhost:3000/users/${userId}`)
-        .then(response => response.json())
-        .then(info=>{
-            setFullName(info.userAllName);
-            currentPosts = info.content.posts;
-        })
-
-        setPosts(currentPosts);
+        currentPosts = await getCurrentUserInfo();
+        setPosts(currentPosts.content.posts);
     }
     
     const ShowTweetsAndRepliesFeed = async ()=>{ // User tweets, user comments and retweets

@@ -31,11 +31,11 @@ function ListsSettings() {
         }
     }
     return (    
-        <div className=' text-white mx-4'>
+        <div className=' text-background-1 mx-4'>
             <h1 className=' text-2xl font-semibold mt-3'>Lists options</h1>
-            <p className=' text-mega-soft-black text-sm mt-3'>Select your preferred language for headlines, buttons, and other text from Twitter.</p>
+            <p className=' text-background-3 text-sm mt-3'>Select your preferred language for headlines, buttons, and other text from Twitter.</p>
             <div className=' flex mt-6 mb-2 justify-center'>
-                <button onClick={()=>removeAllItemsInList()} className=' border-2 border-mega-soft-black py-2 px-8 rounded-full font-semibold'>Remove all items</button>
+                <button onClick={()=>removeAllItemsInList()} className=' border-2 border-background-3 py-2 px-8 rounded-full font-semibold'>Remove all items</button>
             </div>
          </div>
     )
