@@ -25,8 +25,23 @@
       "password": "12345",
       "settings": {
         "display": {
-          "color": "lightBlue",
-          "background": "dim"
+          "color": "orange",
+          "background": "white"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "sessionid": "421l22m2335",
+      "email": "ami@gmail.com",
+      "username": "amalia",
+      "userAllName": "User_amalia",
+      "password": "12345",
+      "settings": {
+        "display": {
+          "color": "yellow",
+          "background": "dark"
         }
       }
     }
@@ -40,124 +55,89 @@
       "img": "http://localhost:5173/defaultImage.png",
       "banerImg": "",
       "Joinded": "25 February 2023",
-      "Following": [
-        2
+      "Following": [],
+      "Followers": [
+        3
       ],
-      "Followers": [],
-      "notifications": [
-        {
-          "content": "Tweet created: \"Hello Twitter\"",
-          "img": "Twitter",
-          "fullDate": "26 February 2023"
-        }
-      ],
+      "notifications": [],
       "content": {
-        "posts": [
-          {
-            "PostId": 1,
-            "comments": [
-              {
-                "userId": 2,
-                "PostId": 2
-              }
-            ],
-            "commentFrom": null,
-            "username": "ramiro",
-            "allUserName": "Ramiro Echevarria",
-            "img": "http://localhost:5173/defaultImage.png",
-            "retweetsUsersId": [],
-            "likesUserId": [
-              2
-            ],
-            "viewsUserId": [
-              1,
-              2
-            ],
-            "content": "Hello Twitter",
-            "contentImage": null,
-            "date": "26 February 2023",
-            "dateInMilliseconds": 1677444269677
-          }
-        ],
-        "reTweetedPosts": [
-          {
-            "userId": 2,
-            "PostId": 2
-          }
-        ],
-        "likes": [
-          {
-            "userId": 2,
-            "PostId": 2
-          }
-        ],
+        "posts": [],
+        "reTweetedPosts": [],
+        "likes": [],
         "lists": []
       }
     },
     {
       "id": 2,
       "username": "pepe",
-      "userAllName": "User_pepe",
-      "biography": "Hello, i am new on twitter.",
+      "userAllName": "pepe el mas capito",
+      "biography": "Odioo a amalia",
       "img": "http://localhost:5173/defaultImage.png",
       "banerImg": "",
       "Joinded": "26 February 2023",
+      "Following": [],
+      "Followers": [
+        3
+      ],
+      "notifications": [],
+      "content": {
+        "posts": [],
+        "reTweetedPosts": [],
+        "likes": [],
+        "lists": []
+      }
+    },
+    {
+      "id": 3,
+      "username": "amalia",
+      "userAllName": "Amalia Altieri",
+      "biography": "Hello, i am new on twitter.",
+      "img": "http://localhost:5173/defaultImage.png",
+      "banerImg": "",
+      "Joinded": "27 February 2023",
       "Following": [
-        1
+        1,
+        2
       ],
       "Followers": [],
       "notifications": [
         {
-          "content": "Tweet created: \"Hello Ramiro, How are u?\"",
+          "content": "Tweet created: \"hola\"",
           "img": "Twitter",
-          "fullDate": "26 February 2023"
+          "fullDate": "27 February 2023"
         }
       ],
       "content": {
         "posts": [
           {
-            "PostId": 2,
+            "PostId": 29,
             "comments": [],
-            "commentFrom": {
-              "userId": 1,
-              "PostId": 1
-            },
-            "username": "pepe",
-            "allUserName": "User_pepe",
+            "commentFrom": null,
+            "username": "amalia",
+            "allUserName": "Amalia Altieri",
             "img": "http://localhost:5173/defaultImage.png",
-            "retweetsUsersId": [
-              1
-            ],
-            "likesUserId": [
-              1
-            ],
+            "retweetsUsersId": [],
+            "likesUserId": [],
             "viewsUserId": [
-              2,
+              3,
               1
             ],
-            "content": "Hello Ramiro, How are u?",
+            "content": "hola",
             "contentImage": null,
-            "date": "26 February 2023",
-            "dateInMilliseconds": 1677444463250
+            "date": "27 February 2023",
+            "dateInMilliseconds": 1677510995105
           }
         ],
         "reTweetedPosts": [],
-        "likes": [
-          {
-            "userId": 1,
-            "PostId": 1
-          }
-        ],
-        "lists": [
-          1
-        ]
+        "likes": [],
+        "lists": []
       }
     }
   ],
   "posts": [
     {
       "id": 1,
-      "lastPostId": 2
+      "lastPostId": 29
     }
   ]
 }

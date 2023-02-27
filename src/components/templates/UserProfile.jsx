@@ -105,14 +105,16 @@ function UserProfile({buttonSelected, chaneFeed}) {
         setProfileValues()
     },[])
 
-    const followAccount = ()=>{
-        fetch(`http://localhost:3000/users/${user.id}`)
+    const followAccount = async()=>{
+        let userData;
+        let PostUser;
+        await fetch(`http://localhost:3000/users/${user.id}`)
         .then(response => response.json())
         .then(info =>{
-            let userData = info;
+            userData = info;
             userData.Following.push(userIdState);
             setFollowingTheAccount(true)
-            fetch(`http://localhost:3000/users/${user.id}`,{
+            fetch(`http://localhost:3000/users/${user.id}`,{  //set following to user.id the userIdState
                 method: 'PUT',
                 body: JSON.stringify(userData),
                 headers:{
@@ -121,18 +123,50 @@ function UserProfile({buttonSelected, chaneFeed}) {
             })
             .catch(error => console.log(error))
         })
-    }
 
-    const unfollowAccount = ()=>{
-        fetch(`http://localhost:3000/users/${user.id}`)
+        await fetch(`http://localhost:3000/users/${userIdState}`)
         .then(response => response.json())
         .then(info =>{
-            let userData = info;
+            PostUser = info;
+            PostUser.Followers.push(userData.id)
+            fetch(`http://localhost:3000/users/${userIdState}`,{  //remove folower to userIdState the user.id
+                method: 'PUT',
+                body: JSON.stringify(PostUser),
+                headers:{
+                    'Content-type':'application/json'
+                }
+            })
+            .catch(error => console.log(error))
+        })
+    }
+
+    const unfollowAccount = async()=>{
+        let userData;
+        let PostUser;
+        await fetch(`http://localhost:3000/users/${user.id}`)
+        .then(response => response.json())
+        .then(info =>{
+            userData = info;
             userData.Following = userData.Following.filter(item => item !== userIdState);
             setFollowingTheAccount(false)
-            fetch(`http://localhost:3000/users/${user.id}`,{
+            fetch(`http://localhost:3000/users/${user.id}`,{  //remove following to user.id the userIdState
                 method: 'PUT',
                 body: JSON.stringify(userData),
+                headers:{
+                    'Content-type':'application/json'
+                }
+            })
+            .catch(error => console.log(error))
+        })
+
+        await fetch(`http://localhost:3000/users/${userIdState}`)
+        .then(response => response.json())
+        .then(info =>{
+            PostUser = info;
+            PostUser.Followers = PostUser.Followers.filter(item => item !== userData.id);
+            fetch(`http://localhost:3000/users/${userIdState}`,{  //remove folower to userIdState the user.id
+                method: 'PUT',
+                body: JSON.stringify(PostUser),
                 headers:{
                     'Content-type':'application/json'
                 }

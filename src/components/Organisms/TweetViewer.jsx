@@ -1,12 +1,10 @@
-import React, { useContext, useLayoutEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import './TweetViewer.css'
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaRetweet, FaRegComment, FaRegTrashAlt } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
-import { HiOutlineUpload } from "react-icons/hi";
-import { GiMoebiusTriangle } from "react-icons/gi";
 import { RiFileListLine } from "react-icons/ri";
 
 import UserContext from '../../contexts/UserContext'
@@ -24,61 +22,61 @@ function TweetViewer({img, userAllName, userName, date, content, postId}) {
     const [viewsCount, setViewsCount] = useState();
     const [inList, setInList] = useState(false);
 
-    useLayoutEffect(()=>{
-        let postUser;
-
-        fetch(`http://localhost:3000/users`)
-        .then(response => response.json())
-        .then(info=>{
-            for (let i = 0; i < info.length; i++) {
-                if (info[i].username == userName) {
-                    postUser = info[i];                    
-                    for (let j = 0; j < postUser.content.posts.length; j++) {
-                        if (postUser.content.posts[j].PostId == postId) {
-                            if(postUser.id == user.id){
-                                setIsPostOwner(true);
-                            }
-
-                            if (postUser.content.posts[j].likesUserId.includes(user.id)) {
-                                setLiked(true);
-                            }else{
-                                setLiked(false);
-                            }
-
-                            if (postUser.content.posts[j].retweetsUsersId.includes(user.id)) {
-                                setRetweeted(true);
-                            }else{
-                                setRetweeted(false);
-                            }
-
-                            if (user.content.lists.includes(postUser.content.posts[j].PostId)) {
-                                setInList(true);
-                            }else{
-                                setInList(false);
-                            }
-
-                            if(!postUser.content.posts[j].viewsUserId.includes(user.id)){
-                                postUser.content.posts[j].viewsUserId.push(user.id)
-                            }
-                            
-                            fetch(`http://localhost:3000/users/${postUser.id}`,{
-                                method:'PUT',
-                                body: JSON.stringify(postUser),
-                                headers: {
-                                    'Content-Type': 'application/json'
+    useEffect(()=>{
+        if (userName != undefined) {
+            let postUser;
+            fetch(`http://localhost:3000/users`)
+            .then(response => response.json())
+            .then(info=>{
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].username == userName) {
+                        postUser = info[i];                    
+                        for (let j = 0; j < postUser.content.posts.length; j++) {
+                            if (postUser.content.posts[j].PostId == postId) {
+                                if(postUser.id == user.id){
+                                    setIsPostOwner(true);
                                 }
-                            })
 
-                            setCommentsCount(postUser.content.posts[j].comments.length);
-                            setLikedCount(postUser.content.posts[j].likesUserId.length);
-                            setRetweetedCount(postUser.content.posts[j].retweetsUsersId.length);
-                            setViewsCount(postUser.content.posts[j].viewsUserId.length);
-                        }
-                    }   
+                                if (postUser.content.posts[j].likesUserId.includes(user.id)) {
+                                    setLiked(true);
+                                }else{
+                                    setLiked(false);
+                                }
+
+                                if (postUser.content.posts[j].retweetsUsersId.includes(user.id)) {
+                                    setRetweeted(true);
+                                }else{
+                                    setRetweeted(false);
+                                }
+
+                                if (user.content.lists.includes(postUser.content.posts[j].PostId)) {
+                                    setInList(true);
+                                }else{
+                                    setInList(false);
+                                }
+
+                                if(!postUser.content.posts[j].viewsUserId.includes(user.id)){
+                                    postUser.content.posts[j].viewsUserId.push(user.id)
+                                    fetch(`http://localhost:3000/users/${postUser.id}`,{
+                                        method:'PUT',
+                                        body: JSON.stringify(postUser),
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                }
+
+                                setCommentsCount(postUser.content.posts[j].comments.length);
+                                setLikedCount(postUser.content.posts[j].likesUserId.length);
+                                setRetweetedCount(postUser.content.posts[j].retweetsUsersId.length);
+                                setViewsCount(postUser.content.posts[j].viewsUserId.length);
+                            }
+                        }   
+                    }
                 }
-            }
-        })
-    },[])
+            })
+        }
+    },[userName])
 
     const changeLikePost = async()=>{
         if(liked){
@@ -104,10 +102,10 @@ function TweetViewer({img, userAllName, userName, date, content, postId}) {
                         }   
                     }
                 }
-                if(currentPost.id !== thisUser.id){
-                    fetch(`http://localhost:3000/users/${currentPost.id}`,{
+                if(postUser.id !== thisUser.id){
+                    fetch(`http://localhost:3000/users/${postUser.id}`,{
                         method:'PUT',
-                        body: JSON.stringify(currentPost),
+                        body: JSON.stringify(postUser),
                         headers: {
                             'Content-Type': 'application/json'
                         }
@@ -128,7 +126,7 @@ function TweetViewer({img, userAllName, userName, date, content, postId}) {
             let postUser;
             let currentPost;
             let thisUser = user;
-            fetch(`http://localhost:3000/users`)
+            await fetch(`http://localhost:3000/users`)
             .then(response => response.json())
             .then(info=>{
                 for (let i = 0; i < info.length; i++) {
@@ -268,6 +266,7 @@ function TweetViewer({img, userAllName, userName, date, content, postId}) {
 
     const deletePost = async()=>{
         let postUser;
+        let commentFromUser;
         await fetch(`http://localhost:3000/users`)
         .then(response => response.json())
         .then(info=>{
@@ -276,11 +275,38 @@ function TweetViewer({img, userAllName, userName, date, content, postId}) {
                     postUser = info[i];                    
                     for (let j = 0; j < postUser.content.posts.length; j++) {
                         if (postUser.content.posts[j].PostId == postId) {
+                            for (let k = 0; k < info.length; k++) {
+                                if(postUser.content.posts[j].commentFrom != null){
+                                    if (info[k].id == postUser.content.posts[j].commentFrom.userId) {
+                                        for (let l = 0; l < info[k].content.posts.length; l++) {
+                                            if (info[k].content.posts[l].PostId == postUser.content.posts[j].commentFrom.PostId) {
+                                                commentFromUser = info[k]
+                                                let index = commentFromUser.content.posts[l].comments.indexOf({ userId:postUser.id, PostId:postUser.content.posts[j].PostId});
+                                                commentFromUser.content.posts[l].comments.splice(index, 1);
+    
+                                                console.log(commentFromUser)
+                                                fetch(`http://localhost:3000/users/${commentFromUser.id}`,{
+                                                    method:'PUT',
+                                                    body: JSON.stringify(commentFromUser),
+                                                    headers: {
+                                                        'Content-Type': 'application/json'
+                                                    }
+                                                })
+    
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
                             let index = postUser.content.posts.indexOf(postUser.content.posts[j]);
                             postUser.content.posts.splice(index, 1);
                             setUser(postUser)
+                            break;
                         }
-                    }   
+                    }
+                    break;
                 }
             }
         })
@@ -360,7 +386,7 @@ function TweetViewer({img, userAllName, userName, date, content, postId}) {
                     </div>
                 </div>
                 <div className=' mx-7 my-2'>
-                    <p className=' my-2'>{content}</p>
+                    <p className='text-background-1 my-2'>{content}</p>
                     <div className=' text-background-3'>{date} · <span className=' font-semibold text-background-1'>{viewsCount}</span> <span>Views</span></div>
                 </div>
             </div>

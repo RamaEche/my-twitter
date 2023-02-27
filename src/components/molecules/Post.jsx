@@ -5,13 +5,11 @@ import './Post.css'
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaRetweet, FaRegComment, FaRegTrashAlt } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
-import { HiOutlineUpload } from "react-icons/hi";
-import { GiMoebiusTriangle } from "react-icons/gi";
 import { RiFileListLine } from "react-icons/ri";
 
 import UserContext from '../../contexts/UserContext'
 
-function Post({img, userAllName, userName = "a", date, content, postId}) {
+function Post({img, userAllName, userName, date, content, postId}) {
     const {user, setUser} = useContext(UserContext);
     const [liked, setLiked] = useState(false);
     const [retweeted, setRetweeted] = useState(false);
@@ -79,6 +77,7 @@ function Post({img, userAllName, userName = "a", date, content, postId}) {
             })
         }
     },[userName])
+
     const changeLikePost = async()=>{
         if(liked){
             let postUser;
@@ -103,10 +102,10 @@ function Post({img, userAllName, userName = "a", date, content, postId}) {
                         }   
                     }
                 }
-                if(currentPost.id !== thisUser.id){
-                    fetch(`http://localhost:3000/users/${currentPost.id}`,{
+                if(postUser.id !== thisUser.id){
+                    fetch(`http://localhost:3000/users/${postUser.id}`,{
                         method:'PUT',
-                        body: JSON.stringify(currentPost),
+                        body: JSON.stringify(postUser),
                         headers: {
                             'Content-Type': 'application/json'
                         }
@@ -127,7 +126,7 @@ function Post({img, userAllName, userName = "a", date, content, postId}) {
             let postUser;
             let currentPost;
             let thisUser = user;
-            fetch(`http://localhost:3000/users`)
+            await fetch(`http://localhost:3000/users`)
             .then(response => response.json())
             .then(info=>{
                 for (let i = 0; i < info.length; i++) {
@@ -267,6 +266,7 @@ function Post({img, userAllName, userName = "a", date, content, postId}) {
 
     const deletePost = async()=>{
         let postUser;
+        let commentFromUser;
         await fetch(`http://localhost:3000/users`)
         .then(response => response.json())
         .then(info=>{
@@ -275,11 +275,38 @@ function Post({img, userAllName, userName = "a", date, content, postId}) {
                     postUser = info[i];                    
                     for (let j = 0; j < postUser.content.posts.length; j++) {
                         if (postUser.content.posts[j].PostId == postId) {
+                            for (let k = 0; k < info.length; k++) {
+                                if(postUser.content.posts[j].commentFrom != null){
+                                    if (info[k].id == postUser.content.posts[j].commentFrom.userId) {
+                                        for (let l = 0; l < info[k].content.posts.length; l++) {
+                                            if (info[k].content.posts[l].PostId == postUser.content.posts[j].commentFrom.PostId) {
+                                                commentFromUser = info[k]
+                                                let index = commentFromUser.content.posts[l].comments.indexOf({ userId:postUser.id, PostId:postUser.content.posts[j].PostId});
+                                                commentFromUser.content.posts[l].comments.splice(index, 1);
+    
+                                                console.log(commentFromUser)
+                                                fetch(`http://localhost:3000/users/${commentFromUser.id}`,{
+                                                    method:'PUT',
+                                                    body: JSON.stringify(commentFromUser),
+                                                    headers: {
+                                                        'Content-Type': 'application/json'
+                                                    }
+                                                })
+    
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
                             let index = postUser.content.posts.indexOf(postUser.content.posts[j]);
                             postUser.content.posts.splice(index, 1);
                             setUser(postUser)
+                            break;
                         }
-                    }   
+                    }
+                    break;
                 }
             }
         })

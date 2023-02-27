@@ -164,12 +164,14 @@ function User({ setTitle }) {
         .then(info=>{
             for (let i = 0; i < Likes.length; i++) {
                 for (let j = 0; j < info.length; j++) {
-                    if (info[j].id == Likes[i].userId) {
-                        for (let k = 0; k < info[j].content.posts.length; k++) {
-                            if (info[j].content.posts[k].PostId == Likes[i].PostId) {
-                                currentPosts.push(info[j].content.posts[k]);
-                            }
-                        }       
+                    if(info[j] != undefined){
+                        if (info[j].id == Likes[i].userId) {
+                            for (let k = 0; k < info[j].content.posts.length; k++) {
+                                if (info[j].content.posts[k].PostId == Likes[i].PostId) {
+                                    currentPosts.push(info[j].content.posts[k]);
+                                }
+                            }       
+                        }
                     }
                 }
             }
